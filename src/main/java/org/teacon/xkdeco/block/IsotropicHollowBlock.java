@@ -18,10 +18,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class IsotropicHollowBlock extends Block implements SimpleWaterloggedBlock, XKDecoBlock.Isotropic {
     private static final VoxelShape TABLE_BASE = Block.box(4, 0, 4, 12, 3, 12);
     private static final VoxelShape TABLE_LEG = Block.box(6, 3, 6, 10, 13, 10);
@@ -76,12 +76,12 @@ public final class IsotropicHollowBlock extends Block implements SimpleWaterlogg
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED);
     }
-    
+
     @Override
     public boolean isGlass() {
         return false;
     }
-    
+
     @Override
     public VoxelShape getShapeStatic(BlockState state) {
         return this.blockShape;

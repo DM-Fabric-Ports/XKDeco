@@ -1,43 +1,82 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'org.parchmentmc', name: 'librarian', version: '1.+'
-    }
+plugins {
+	id 'maven-publish'
+	alias(libs.plugins.quilt.loom)
 }
 
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+archivesBaseName = project.archives_base_name
+version = project.version
+group = project.maven_group
 
-apply from: 'gradle/teacon-forge.gradle'
+repositories {
+	maven { url 'https://jitpack.io' }
+	flatDir { dir "libs/deferred_registries" }
+}
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+// All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
+// See https://docs.gradle.org/current/userguide/platforms.html for information on how version catalogs work.
+dependencies {
+	minecraft libs.minecraft
+	mappings loom.layered {
+		addLayer quiltMappings.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2")
+		officialMojangMappings() // Uncomment if you want to use Mojang mappings as your primary mappings, falling back on QM for parameters and Javadocs
+	}
+	modImplementation libs.quilt.loader
 
-// definitions at gradle/teacon-forge.gradle
-teacon {
-    modId = 'xkdeco'
-    modVersion = '0.3.0'
-    modLicense = 'BSD-3-Clause'
-    modGitHubRepo = 'teaconmc/XKDeco'
-    modAuthors = ['xekr (XeKr)', 'ustc-zzzz', 'LucunJi']
-    modDescription = 'XeKr\'s Decorations for Minecraft 1.18.'
+	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
+	// Quilted Fabric API will automatically pull in the correct QSL version.
+	modImplementation libs.quilted.fabric.api
 
-    platform = 'forge-1.18.2-40.0.19'
-    parchment = '2022.03.13'
+	modImplementation include("com.dm.earth:deferred_registries:0.1.0")
+}
 
-    // uncomment these lines if you need
-    modName = 'XeKr\'s Decorations' // default to repo name
-    // modGitHubBranch = 1.18-forge // for referring the license
-    // modifyMemberAccess = true // for access transformer
-     useDataGeneration = true // for data generation
-    // publishTask = shadowJar // for shadow jar or other usages
-    // lazyTokens = ['minecraft_classpath': { project.configurations.shadow.asPath }] // for runtime tokens
+processResources {
+	inputs.property "version", version
 
-    // use './gradlew -q printModMeta > src/main/resources/META-INF/mods.toml' to generate mod meta
+	filesMatching('quilt.mod.json') {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = "UTF-8"
+	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	it.options.release = 17
+}
+
+java {
+	// Still required by IDEs such as Eclipse and Visual Studio Code
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
+
+	// If this mod is going to be a library, then it should also generate Javadocs in order to aid with developement.
+	// Uncomment this line to generate them.
+	// withJavadocJar()
+}
+
+// If you plan to use a different file for the license, don't forget to change the file name here!
+jar {
+	from("LICENSE") {
+		rename { "${it}_${archivesBaseName}" }
+	}
+}
+
+// Configure the maven publication
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+	}
 }

@@ -21,10 +21,10 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialCupBlock extends Block implements XKDecoBlock.Special {
     private static final int MAXIMUM_COUNT = 4;
 

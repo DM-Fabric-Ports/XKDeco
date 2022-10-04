@@ -26,7 +26,7 @@ import org.teacon.xkdeco.block.IsotropicRoofEaveBlock;
 import org.teacon.xkdeco.block.SpecialWardrobeBlock;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoBlockStateProvider extends BlockStateProvider {
     private static final Logger LOGGER = LogManager.getLogger("XKDeco");
 

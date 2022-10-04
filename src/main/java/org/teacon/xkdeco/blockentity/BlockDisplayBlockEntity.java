@@ -29,14 +29,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.teacon.xkdeco.XKDeco;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 import java.util.Optional;
 
 import static org.teacon.xkdeco.init.XKDecoObjects.BLOCK_DISPLAY_BLOCK_ENTITY;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class BlockDisplayBlockEntity extends BlockEntity implements Clearable {
     public static final RegistryObject<BlockEntityType<BlockDisplayBlockEntity>> TYPE =
             RegistryObject.of(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), ForgeRegistries.BLOCK_ENTITIES);

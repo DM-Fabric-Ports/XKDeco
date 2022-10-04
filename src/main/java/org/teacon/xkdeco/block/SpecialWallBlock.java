@@ -24,11 +24,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.blockentity.WallBlockEntity;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Optional;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialWallBlock extends WallBlock implements EntityBlock, XKDecoBlock.Special {
     private static final VoxelShape NORTH_TEST = Block.box(7, 0, 0, 9, 16, 9);
     private static final VoxelShape SOUTH_TEST = Block.box(7, 0, 7, 9, 16, 16);

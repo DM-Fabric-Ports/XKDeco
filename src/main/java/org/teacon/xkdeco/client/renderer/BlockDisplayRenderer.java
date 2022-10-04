@@ -13,11 +13,11 @@ import net.minecraftforge.client.model.data.EmptyModelData;
 import org.jetbrains.annotations.NotNull;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class BlockDisplayRenderer implements BlockEntityRenderer<BlockDisplayBlockEntity> {
     private final BlockRenderDispatcher blockRenderer;
     private static final float BLOCK_SCALE = 0.99f;

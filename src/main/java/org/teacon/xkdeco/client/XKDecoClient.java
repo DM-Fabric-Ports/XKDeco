@@ -30,10 +30,10 @@ import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.init.XKDecoObjects;
 import org.teacon.xkdeco.resource.SpecialWallResources;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoClient {
     public static void setItemColors(ColorHandlerEvent.Item event) {
         var blockColors = event.getBlockColors();

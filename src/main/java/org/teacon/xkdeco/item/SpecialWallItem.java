@@ -11,11 +11,11 @@ import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.block.SpecialWallBlock;
 import org.teacon.xkdeco.client.renderer.XKDecoWithoutLevelRenderer;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.function.Consumer;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialWallItem extends BlockItem {
     public SpecialWallItem(SpecialWallBlock pBlock, Properties pProperties) {
         super(pBlock, pProperties);

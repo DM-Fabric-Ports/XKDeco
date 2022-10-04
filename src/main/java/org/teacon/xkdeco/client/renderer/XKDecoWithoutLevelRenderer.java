@@ -13,10 +13,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.teacon.xkdeco.blockentity.WallBlockEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer {
     public static final XKDecoWithoutLevelRenderer INSTANCE = new XKDecoWithoutLevelRenderer(Minecraft.getInstance());
 

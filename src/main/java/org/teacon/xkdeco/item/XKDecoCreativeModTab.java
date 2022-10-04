@@ -8,11 +8,11 @@ import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.teacon.xkdeco.XKDeco;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoCreativeModTab extends CreativeModeTab {
     public static final CreativeModeTab TAB_BASIC = new XKDecoCreativeModTab(XKDeco.ID + "_basic", "black_tiles");
     public static final CreativeModeTab TAB_STRUCTURE = new XKDecoCreativeModTab(XKDeco.ID + "_structure", "special_wall_minecraft_cobblestone_wall");

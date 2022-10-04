@@ -17,7 +17,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryObject;
 import org.teacon.xkdeco.XKDeco;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +28,7 @@ import static org.teacon.xkdeco.init.XKDecoObjects.*;
 import static org.teacon.xkdeco.item.XKDecoCreativeModTab.*;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoEnUsLangProvider extends LanguageProvider {
     public XKDecoEnUsLangProvider(DataGenerator gen, String modid, String locale) {
         super(gen, modid, locale);

@@ -17,13 +17,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class BasicCubeBlock extends Block implements XKDecoBlock.Basic {
     private static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 

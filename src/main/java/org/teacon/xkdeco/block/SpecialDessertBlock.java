@@ -21,10 +21,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialDessertBlock extends Block implements XKDecoBlock.Special {
     private static final int MAXIMUM_COUNT = 7;
 

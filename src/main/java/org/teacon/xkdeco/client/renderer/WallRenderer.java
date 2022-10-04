@@ -18,11 +18,11 @@ import net.minecraftforge.client.model.data.EmptyModelData;
 import org.teacon.xkdeco.block.SpecialWallBlock;
 import org.teacon.xkdeco.blockentity.WallBlockEntity;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Random;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class WallRenderer implements BlockEntityRenderer<WallBlockEntity> {
     private final BlockRenderDispatcher blockRenderer;
 

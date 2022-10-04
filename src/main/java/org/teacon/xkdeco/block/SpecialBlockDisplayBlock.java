@@ -35,11 +35,11 @@ import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
 import org.teacon.xkdeco.util.MathUtil;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialBlockDisplayBlock extends BaseEntityBlock implements XKDecoBlock.Special {
     private static final VoxelShape TOP = Block.box(0, 11, 0, 16, 16, 16);
     private static final VoxelShape NECK = Block.box(2, 8, 2, 14, 11, 14);

@@ -19,12 +19,12 @@ import org.jetbrains.annotations.NotNull;
 import org.teacon.xkdeco.block.SpecialItemDisplayBlock;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 import java.util.Random;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class ItemDisplayRenderer implements BlockEntityRenderer<ItemDisplayBlockEntity> {
     private final ItemRenderer itemRenderer;
     private final Random random = new Random();

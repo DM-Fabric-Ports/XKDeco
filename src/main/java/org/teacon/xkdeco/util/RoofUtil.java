@@ -7,12 +7,12 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.util.TriPredicate;
+
+import org.teacon.xkdeco.api.minecraftforge.common.util.TriPredicate;
 import org.teacon.xkdeco.block.IsotropicRoofBlock;
 import org.teacon.xkdeco.block.IsotropicRoofEaveBlock;
 import org.teacon.xkdeco.block.IsotropicRoofFlatBlock;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.function.BiPredicate;
@@ -203,7 +203,6 @@ public class RoofUtil {
     }
 
     @MethodsReturnNonnullByDefault
-    @ParametersAreNonnullByDefault
     public enum RoofHalf implements StringRepresentable {
         BASE, TIP;
 
@@ -223,7 +222,6 @@ public class RoofUtil {
     }
 
     @MethodsReturnNonnullByDefault
-    @ParametersAreNonnullByDefault
     public enum RoofShape implements StringRepresentable {
         STRAIGHT, INNER, OUTER;
 
@@ -239,7 +237,6 @@ public class RoofUtil {
     }
 
     @MethodsReturnNonnullByDefault
-    @ParametersAreNonnullByDefault
     public enum RoofVariant implements StringRepresentable {
         NORMAL, SLOW, STEEP;
 

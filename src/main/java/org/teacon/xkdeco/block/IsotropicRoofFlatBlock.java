@@ -18,12 +18,12 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 import static org.teacon.xkdeco.util.RoofUtil.*;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class IsotropicRoofFlatBlock extends Block implements SimpleWaterloggedBlock, XKDecoBlock.Isotropic {
     public static final EnumProperty<RoofHalf> HALF = EnumProperty.create("half", RoofHalf.class);
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;

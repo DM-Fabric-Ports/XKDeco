@@ -14,7 +14,7 @@ import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialWallResources implements PackResources {
     private static final String BLOCK_MODEL_LOCATION = XKDeco.ID + ":block/" + XKDecoObjects.WALL_BLOCK_ENTITY;
     private static final String ITEM_MODEL_LOCATION = XKDeco.ID + ":item/" + XKDecoObjects.WALL_BLOCK_ENTITY;

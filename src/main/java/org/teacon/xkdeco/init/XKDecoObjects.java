@@ -33,7 +33,7 @@ import org.teacon.xkdeco.blockentity.WardrobeBlockEntity;
 import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class XKDecoObjects {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, XKDeco.ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, XKDeco.ID);

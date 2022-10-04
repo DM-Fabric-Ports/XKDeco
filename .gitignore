@@ -1,26 +1,27 @@
-# eclipse
-bin
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# Quilt Loom
+run/
+
+# Eclipse
 *.launch
-.settings
-.metadata
+
+# IntelliJ Idea
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.settings/
+.vscode/
+bin/
 .classpath
 .project
 
-# idea
-out
-*.ipr
-*.iws
-*.iml
-.idea
-
-# gradle
-build
-.gradle
-
-# other
-eclipse
-run_data
-run_test
-run_server
-run_client
-jsondiff
+# macOS
+*.DS_Store

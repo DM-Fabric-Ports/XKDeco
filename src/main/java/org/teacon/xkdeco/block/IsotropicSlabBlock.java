@@ -11,10 +11,10 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class IsotropicSlabBlock extends SlabBlock implements XKDecoBlock.Isotropic {
     private final boolean isGlass;
 
@@ -22,7 +22,7 @@ public final class IsotropicSlabBlock extends SlabBlock implements XKDecoBlock.I
         super(properties);
         this.isGlass = isGlass;
     }
-    
+
     @Override
     @SuppressWarnings("deprecation")
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
@@ -39,7 +39,7 @@ public final class IsotropicSlabBlock extends SlabBlock implements XKDecoBlock.I
                 faceBlocked = true;
             }
         }
-    
+
         return (this.isGlass && faceBlocked) || super.skipRendering(pState, pAdjacentBlockState, pDirection);
     }
 
@@ -63,7 +63,7 @@ public final class IsotropicSlabBlock extends SlabBlock implements XKDecoBlock.I
     public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
         return this.isGlass || super.propagatesSkylightDown(state, world, pos);
     }
-    
+
     @Override
     public boolean isGlass() {
         return isGlass;

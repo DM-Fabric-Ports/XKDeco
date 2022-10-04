@@ -27,11 +27,11 @@ import net.minecraftforge.registries.RegistryObject;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class CushionEntity extends Entity {
     private static final EntityDataSerializer<Vec3> LOCATION_DATA_SERIALIZER;
     public static final RegistryObject<EntityType<CushionEntity>> TYPE;

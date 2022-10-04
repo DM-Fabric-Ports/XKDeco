@@ -21,13 +21,13 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.List;
 
 import static org.teacon.xkdeco.util.RoofUtil.*;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class IsotropicRoofBlock extends Block implements SimpleWaterloggedBlock, XKDecoBlock.Isotropic {
     public static final EnumProperty<RoofVariant> VARIANT = EnumProperty.create("variant", RoofVariant.class);
     public static final EnumProperty<RoofShape> SHAPE = EnumProperty.create("shape", RoofShape.class);

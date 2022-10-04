@@ -35,12 +35,12 @@ import org.jetbrains.annotations.Nullable;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
 import org.teacon.xkdeco.util.MathUtil;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 import static org.teacon.xkdeco.util.MathUtil.TAU;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class SpecialItemDisplayBlock extends BaseEntityBlock implements XKDecoBlock.Special {
     private static final VoxelShape TOP = Block.box(0, 13, 0, 16, 16, 16);
     private static final VoxelShape SHAPE = Shapes.or(

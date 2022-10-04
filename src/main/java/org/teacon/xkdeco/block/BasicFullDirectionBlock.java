@@ -22,13 +22,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class BasicFullDirectionBlock extends Block implements SimpleWaterloggedBlock, XKDecoBlock.Basic {
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final DirectionProperty FACING = BlockStateProperties.FACING;

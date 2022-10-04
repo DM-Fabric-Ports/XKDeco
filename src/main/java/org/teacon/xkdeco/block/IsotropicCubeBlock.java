@@ -11,10 +11,10 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+
 public final class IsotropicCubeBlock extends Block implements XKDecoBlock.Isotropic {
     private final boolean isGlass;
 
@@ -22,13 +22,13 @@ public final class IsotropicCubeBlock extends Block implements XKDecoBlock.Isotr
         super(properties);
         this.isGlass = isGlass;
     }
-    
+
     @Override
     @SuppressWarnings("deprecation")
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
         return cubeSkipRendering(pState,pAdjacentBlockState,pDirection) || super.skipRendering(pState, pAdjacentBlockState, pDirection);
     }
-    
+
     public static boolean cubeSkipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
         var block1 = pState.getBlock();
         var block2 = pAdjacentBlockState.getBlock();
@@ -39,10 +39,10 @@ public final class IsotropicCubeBlock extends Block implements XKDecoBlock.Isotr
                     || (pAdjacentBlockState.getBlock() instanceof StairBlock) && ((pAdjacentBlockState.getValue(StairBlock.HALF) == Half.BOTTOM && pDirection == Direction.UP)
                     || (pAdjacentBlockState.getValue(StairBlock.HALF) == Half.TOP && pDirection == Direction.DOWN));
         }
-    
+
         return false;
     }
-    
+
     public VoxelShape getShapeStatic(BlockState pState){
         return Shapes.block();
     }
@@ -57,7 +57,7 @@ public final class IsotropicCubeBlock extends Block implements XKDecoBlock.Isotr
     public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
         return this.isGlass || super.propagatesSkylightDown(state, world, pos);
     }
-    
+
     @Override
     public boolean isGlass() {
         return isGlass;
