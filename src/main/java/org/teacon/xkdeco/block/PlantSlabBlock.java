@@ -3,6 +3,7 @@ package org.teacon.xkdeco.block;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
@@ -17,23 +18,24 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.teacon.xkdeco.XKDeco;
 
+import com.dm.earth.deferred_registries.DeferredObject;
 
 import java.util.Random;
 
 @MethodsReturnNonnullByDefault
-
 public final class PlantSlabBlock extends SlabBlock implements XKDecoBlock.Plant {
     private static final VoxelShape PATH_TOP_AABB = Block.box(0, 8, 0, 16, 15, 16);
     private static final VoxelShape PATH_BOTTOM_AABB = Block.box(0, 0, 0, 16, 7, 16);
     private static final VoxelShape PATH_DOUBLE_AABB = Block.box(0, 0, 0, 16, 15, 16);
 
     private final boolean isPath;
-    private final RegistryObject<Block> dirtSlab;
+    private final DeferredObject<Block> dirtSlab;
 
     public PlantSlabBlock(Properties properties, boolean isPath, String dirtSlabId) {
         super(properties);
         this.isPath = isPath;
-        this.dirtSlab = RegistryObject.of(new ResourceLocation(XKDeco.ID, dirtSlabId), ForgeRegistries.BLOCKS);
+		//TODO: test
+        this.dirtSlab = new DeferredObject<Block>(XKDeco.asResource(dirtSlabId), Registry.BLOCK.get(XKDeco.asResource(dirtSlabId)));
     }
 
     @Override
@@ -51,8 +53,7 @@ public final class PlantSlabBlock extends SlabBlock implements XKDecoBlock.Plant
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction facing,
-                                  BlockState facingState, LevelAccessor world, BlockPos pos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos pos, BlockPos facingPos) {
         if (facing.getAxis() == Direction.Axis.Y && !state.canSurvive(world, pos)) {
             world.scheduleTick(pos, this, 1);
         }
@@ -85,7 +86,7 @@ public final class PlantSlabBlock extends SlabBlock implements XKDecoBlock.Plant
     @Override
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rng) {
-        if (world.isAreaLoaded(pos, 1)) {
+        if (world.isLoaded(pos)) {
             if (!this.isPath && !canBeGrass(state, world, pos)) {
                 this.turnToDirt(state, world, pos);
             }

@@ -32,14 +32,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
-import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
 import org.teacon.xkdeco.util.MathUtil;
 
 
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-
 public final class SpecialBlockDisplayBlock extends BaseEntityBlock implements XKDecoBlock.Special {
     private static final VoxelShape TOP = Block.box(0, 11, 0, 16, 16, 16);
     private static final VoxelShape NECK = Block.box(2, 8, 2, 14, 11, 14);
@@ -138,7 +136,7 @@ public final class SpecialBlockDisplayBlock extends BaseEntityBlock implements X
             blockEntity.setItem(temp);
         } else if (blockEntity.getSelectedProperty().isEmpty()) {
             message(player, new TranslatableComponent("item.minecraft.debug_stick.empty",
-                    Objects.requireNonNull(blockEntity.getStoredBlockState().getBlock().getRegistryName()).toString()));
+                    Objects.requireNonNull(blockEntity.getStoredBlockState().getBlock().getName()).toString()));
         } else if (hit.getLocation().subtract(Vec3.atLowerCornerOf(pos)).y() > 0.5) {
             var property = blockEntity.getSelectedProperty().get();
             blockEntity.setStoredBlockState(cycleState(blockEntity.getStoredBlockState(), property, false));
@@ -161,7 +159,7 @@ public final class SpecialBlockDisplayBlock extends BaseEntityBlock implements X
     }
 
     // borrowed from DebugStickItem#getRelative
-    private static <T> T getRelative(Iterable<T> pAllowedValues, @javax.annotation.Nullable T pCurrentValue, boolean pBackwards) {
+    private static <T> T getRelative(Iterable<T> pAllowedValues, @Nullable T pCurrentValue, boolean pBackwards) {
         return pBackwards ? Util.findPreviousInIterable(pAllowedValues, pCurrentValue) : Util.findNextInIterable(pAllowedValues, pCurrentValue);
     }
 

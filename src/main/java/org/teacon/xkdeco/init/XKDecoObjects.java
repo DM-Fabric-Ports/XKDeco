@@ -1,10 +1,14 @@
 package org.teacon.xkdeco.init;
 
+import com.dm.earth.deferred_registries.DeferredRegistries;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
+
+import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents.TagsLoaded;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -19,12 +23,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.event.TagsUpdatedEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+
+import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.teacon.xkdeco.XKDeco;
+import org.teacon.xkdeco.api.util.RegistryUtil;
 import org.teacon.xkdeco.block.*;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
@@ -45,10 +47,10 @@ import static org.teacon.xkdeco.init.XKDecoProperties.*;
 @MethodsReturnNonnullByDefault
 
 public final class XKDecoObjects {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, XKDeco.ID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, XKDeco.ID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, XKDeco.ID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, XKDeco.ID);
+    public static final DeferredRegistries<EntityType<?>> ENTITIES = DeferredRegistries.create(Registry.ENTITY_TYPE, XKDeco.ID);
+    public static final DeferredRegistries<Block> BLOCKS = DeferredRegistries.create(Registry.BLOCK, XKDeco.ID);
+    public static final DeferredRegistries<Item> ITEMS = DeferredRegistries.create(Registry.ITEM, XKDeco.ID);
+    public static final DeferredRegistries<BlockEntityType<?>> BLOCK_ENTITY = DeferredRegistries.create(Registry.BLOCK_ENTITY_TYPE, XKDeco.ID);
 
     public static final String CUSHION_ENTITY = "cushion";
 
@@ -102,9 +104,9 @@ public final class XKDecoObjects {
     public static final String ITEM_PROJECTOR_SPECIAL = "item_projector";
 
     private static void addCushionEntity() {
-        ENTITIES.register(CUSHION_ENTITY, () -> EntityType.Builder
+        ENTITIES.register(CUSHION_ENTITY, EntityType.Builder
                 .<CushionEntity>of(CushionEntity::new, MobCategory.MISC).sized(1F / 256F, 1F / 256F)
-                .setTrackingRange(256).build(new ResourceLocation(XKDeco.ID, CUSHION_ENTITY).toString()));
+                .clientTrackingRange(256).build(new ResourceLocation(XKDeco.ID, CUSHION_ENTITY).toString()));
     }
 
     private static void addBasic(String id, ShapeFunction shapeFunction, boolean isSupportNeeded,
@@ -223,14 +225,14 @@ public final class XKDecoObjects {
     }
 
     private static void addDisplayBlockEntity() {
-        BLOCK_ENTITY.register(ITEM_DISPLAY_BLOCK_ENTITY, () ->
+        BLOCK_ENTITY.register(ITEM_DISPLAY_BLOCK_ENTITY,
                 BlockEntityType.Builder.of(ItemDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(RegistryObject::get)
+                        BLOCKS.getEntries().stream().map(DeferredObject::get)
                                 .filter(b -> b instanceof SpecialItemDisplayBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
         BLOCK_ENTITY.register(BLOCK_DISPLAY_BLOCK_ENTITY, () ->
                 BlockEntityType.Builder.of(BlockDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(RegistryObject::get)
+                        BLOCKS.getEntries().stream().map(DeferredObject::get)
                                 .filter(b -> b instanceof SpecialBlockDisplayBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
     }
@@ -238,53 +240,50 @@ public final class XKDecoObjects {
     private static void addWardrobeBlockEntity() {
         BLOCK_ENTITY.register(WARDROBE_BLOCK_ENTITY,
                 () -> BlockEntityType.Builder.of(WardrobeBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(RegistryObject::get)
+                        BLOCKS.getEntries().stream().map(DeferredObject::get)
                                 .filter(b -> b instanceof SpecialWardrobeBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
     }
 
-    public static void addSpecialWallBlocks(Register<Block> event) {
-        var blocks = new ArrayList<Block>();
-        for (var block : ForgeRegistries.BLOCKS.getValues()) {
+    public static void addSpecialWallBlocks() {
+        for (var set : Registry.BLOCK.entrySet()) {
+			Block block = set.getValue();
             if (block instanceof WallBlock wall) {
-                var registryName = Objects.requireNonNull(block.getRegistryName());
+                var registryName = Objects.requireNonNull(set.getKey().location());
                 if (!"minecraft".equals(registryName.getNamespace())) {
                     continue;
                 }
                 var name = SPECIAL_WALL_PREFIX + registryName.toString().replace(':', '_');
-                blocks.add(new SpecialWallBlock(wall).setRegistryName(new ResourceLocation(XKDeco.ID, name)));
+				Registry.register(Registry.BLOCK, XKDeco.asResource(name), new SpecialWallBlock(wall));
             }
         }
-        event.getRegistry().registerAll(blocks.toArray(new Block[0]));
     }
 
-    public static void addSpecialWallItems(Register<Item> event) {
-        var items = new ArrayList<Item>();
-        for (var block : ForgeRegistries.BLOCKS.getValues()) {
+    public static void addSpecialWallItems() {
+        for (var set : Registry.BLOCK.entrySet()) {
+			Block block = set.getValue();
             if (block instanceof SpecialWallBlock wall) {
-                var registryName = Objects.requireNonNull(block.getRegistryName());
-                items.add(new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE).setRegistryName(registryName));
+            //    var registryName = Objects.requireNonNull(block.getName());
+				Registry.register(Registry.ITEM, set.getKey().location(), new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE));
             }
         }
-        event.getRegistry().registerAll(items.toArray(new Item[0]));
     }
 
-    public static void addSpecialWallBlockEntity(Register<BlockEntityType<?>> event) {
-        var blocks = ForgeRegistries.BLOCKS.getValues().stream()
-                .filter(SpecialWallBlock.class::isInstance).toArray(Block[]::new);
-        var registryName = new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY);
-        event.getRegistry().register(BlockEntityType.Builder
-                .of(WallBlockEntity::new, blocks).build(DSL.remainderType()).setRegistryName(registryName));
+    public static void addSpecialWallBlockEntity() {
+        var blocks = RegistryUtil.getBlockEntityBlocks(SpecialWallBlock.class);
+        var registryName = XKDeco.asResource(WALL_BLOCK_ENTITY);
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, registryName, QuiltBlockEntityTypeBuilder.create(WallBlockEntity::new, blocks).build(DSL.remainderType()));
     }
 
-    public static void addSpecialWallTags(TagsUpdatedEvent event) {
-        var registry = event.getTagManager().registryOrThrow(ForgeRegistries.BLOCKS.getRegistryKey());
+	//TODO: impl tags
+    public static void addSpecialWallTags() {
+        var registry = event.getTagManager().registryOrThrow(Registry.BLOCKS.getRegistryKey());
         registry.bindTags(registry.getTagNames().collect(Collectors.toMap(Function.identity(), tagKey -> {
             var tags = Lists.newArrayList(registry.getTagOrEmpty(tagKey));
             if (BlockTags.WALLS.equals(tagKey)) {
-                for (var block : ForgeRegistries.BLOCKS.getValues()) {
+                for (var block : Registry.BLOCKS.getValues()) {
                     if (block instanceof SpecialWallBlock) {
-                        tags.add(ForgeRegistries.BLOCKS.getHolder(block).orElseThrow());
+                        tags.add(Registry.BLOCKS.getHolder(block).orElseThrow());
                     }
                 }
             }

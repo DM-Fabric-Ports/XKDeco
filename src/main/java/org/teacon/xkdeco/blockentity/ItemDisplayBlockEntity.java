@@ -6,6 +6,7 @@ package org.teacon.xkdeco.blockentity;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
@@ -19,22 +20,24 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.teacon.xkdeco.XKDeco;
+import org.teacon.xkdeco.block.SpecialItemDisplayBlock;
 
+import com.dm.earth.deferred_registries.DeferredObject;
 
 import java.util.Objects;
 
 import static org.teacon.xkdeco.init.XKDecoObjects.ITEM_DISPLAY_BLOCK_ENTITY;
+import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 @MethodsReturnNonnullByDefault
 
 public final class ItemDisplayBlockEntity extends BlockEntity implements Clearable {
-    public static final RegistryObject<BlockEntityType<ItemDisplayBlockEntity>> TYPE =
-            RegistryObject.of(new ResourceLocation(XKDeco.ID, ITEM_DISPLAY_BLOCK_ENTITY), ForgeRegistries.BLOCK_ENTITIES);
+    public static final DeferredObject<BlockEntityType<ItemDisplayBlockEntity>> TYPE =
+            new DeferredObject<BlockEntityType<ItemDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, ITEM_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new, new SpecialItemDisplayBlock(BLOCK_STONE_DISPLAY), new SpecialItemDisplayBlock(BLOCK_METAL_DISPLAY)).build(null));
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String SPIN_NBT_KEY = "Spin";
 
@@ -44,10 +47,10 @@ public final class ItemDisplayBlockEntity extends BlockEntity implements Clearab
 
     public ItemDisplayBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(TYPE.get(), blockPos, blockState);
-        this.isProjector = blockState.is(Objects.requireNonNull(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(XKDeco.ID, "item_projector"))));
+        this.isProjector = blockState.is(Objects.requireNonNull(Registry.BLOCK.get(new ResourceLocation(XKDeco.ID, "item_projector"))));
     }
 
-    @Override
+    // @Override
     public AABB getRenderBoundingBox() {
         if (isProjector) {
             return AABB.ofSize(Vec3.atBottomCenterOf(this.getBlockPos().above(9)), 16, 16, 16);
@@ -89,7 +92,7 @@ public final class ItemDisplayBlockEntity extends BlockEntity implements Clearab
                 be -> ((ItemDisplayBlockEntity) be).writeNbt(null));
     }
 
-    @Override
+    // @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         readNbt(pkt.getTag());
     }
@@ -99,7 +102,7 @@ public final class ItemDisplayBlockEntity extends BlockEntity implements Clearab
         return writeNbt(null);
     }
 
-    @Override
+    // @Override
     public void handleUpdateTag(CompoundTag tag) {
         readNbt(tag);
     }

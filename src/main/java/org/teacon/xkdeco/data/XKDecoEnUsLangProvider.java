@@ -14,7 +14,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.DeferredObject;
 import org.teacon.xkdeco.XKDeco;
 
 
@@ -85,7 +85,7 @@ public final class XKDecoEnUsLangProvider extends LanguageProvider {
     protected void addTranslations() {
         Stream.<DeferredRegister<?>>of(BLOCKS, ITEMS, ENTITIES)
                 .flatMap(deferredRegister -> deferredRegister.getEntries().stream())
-                .map(RegistryObject::get)
+                .map(DeferredObject::get)
                 .filter(obj -> !(obj instanceof BlockItem))
                 .forEach(this::translate);
         Stream.of(TAB_BASIC, TAB_FUNCTIONAL, TAB_FURNITURE, TAB_NATURE, TAB_STRUCTURE)

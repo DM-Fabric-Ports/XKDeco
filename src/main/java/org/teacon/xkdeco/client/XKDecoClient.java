@@ -17,7 +17,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.DeferredObject;
 import org.teacon.xkdeco.block.XKDecoBlock;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
@@ -44,15 +44,15 @@ public final class XKDecoClient {
         var waterItemColor = (ItemColor) (stack, tintIndex) -> 0x3f76e4;
         var itemColors = event.getItemColors();
         itemColors.register(blockItemColor, XKDecoObjects.ITEMS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.GRASS_PREFIX)).map(RegistryObject::get).toArray(Item[]::new));
+                .getPath().contains(XKDecoObjects.GRASS_PREFIX)).map(DeferredObject::get).toArray(Item[]::new));
         itemColors.register(blockItemColor, XKDecoObjects.ITEMS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.PLANTABLE_PREFIX)).map(RegistryObject::get).toArray(Item[]::new));
+                .getPath().contains(XKDecoObjects.PLANTABLE_PREFIX)).map(DeferredObject::get).toArray(Item[]::new));
         itemColors.register(blockItemColor, XKDecoObjects.ITEMS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.WILLOW_PREFIX)).map(RegistryObject::get).toArray(Item[]::new));
+                .getPath().contains(XKDecoObjects.WILLOW_PREFIX)).map(DeferredObject::get).toArray(Item[]::new));
         itemColors.register(blockItemColor, XKDecoObjects.ITEMS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.LEAVES_DARK_SUFFIX)).map(RegistryObject::get).toArray(Item[]::new));
+                .getPath().contains(XKDecoObjects.LEAVES_DARK_SUFFIX)).map(DeferredObject::get).toArray(Item[]::new));
         itemColors.register(waterItemColor, XKDecoObjects.ITEMS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.STONE_WATER_PREFIX)).map(RegistryObject::get).toArray(Item[]::new));
+                .getPath().contains(XKDecoObjects.STONE_WATER_PREFIX)).map(DeferredObject::get).toArray(Item[]::new));
     }
 
     public static void setBlockColors(ColorHandlerEvent.Block event) {
@@ -76,15 +76,15 @@ public final class XKDecoClient {
         };
         var blockColors = event.getBlockColors();
         blockColors.register(grassBlockColor, XKDecoObjects.BLOCKS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.GRASS_PREFIX)).map(RegistryObject::get).toArray(Block[]::new));
+                .getPath().contains(XKDecoObjects.GRASS_PREFIX)).map(DeferredObject::get).toArray(Block[]::new));
         blockColors.register(grassBlockColor, XKDecoObjects.BLOCKS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.PLANTABLE_PREFIX)).map(RegistryObject::get).toArray(Block[]::new));
+                .getPath().contains(XKDecoObjects.PLANTABLE_PREFIX)).map(DeferredObject::get).toArray(Block[]::new));
         blockColors.register(leavesBlockColor, XKDecoObjects.BLOCKS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.WILLOW_PREFIX)).map(RegistryObject::get).toArray(Block[]::new));
+                .getPath().contains(XKDecoObjects.WILLOW_PREFIX)).map(DeferredObject::get).toArray(Block[]::new));
         blockColors.register(leavesBlockColor, XKDecoObjects.BLOCKS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.LEAVES_DARK_SUFFIX)).map(RegistryObject::get).toArray(Block[]::new));
+                .getPath().contains(XKDecoObjects.LEAVES_DARK_SUFFIX)).map(DeferredObject::get).toArray(Block[]::new));
         blockColors.register(waterBlockColor, XKDecoObjects.BLOCKS.getEntries().stream().filter(r -> r.getId()
-                .getPath().contains(XKDecoObjects.STONE_WATER_PREFIX)).map(RegistryObject::get).toArray(Block[]::new));
+                .getPath().contains(XKDecoObjects.STONE_WATER_PREFIX)).map(DeferredObject::get).toArray(Block[]::new));
     }
 
     public static void setCutoutBlocks(FMLClientSetupEvent event) {

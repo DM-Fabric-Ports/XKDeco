@@ -10,21 +10,20 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.block.SpecialWallBlock;
 
+import com.dm.earth.deferred_registries.DeferredObject;
 
 import java.util.Objects;
 
 import static org.teacon.xkdeco.init.XKDecoObjects.WALL_BLOCK_ENTITY;
+import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 @MethodsReturnNonnullByDefault
-
 public final class WallBlockEntity extends BlockEntity {
-    public static final RegistryObject<BlockEntityType<WallBlockEntity>> TYPE =
-            RegistryObject.of(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), ForgeRegistries.BLOCK_ENTITIES);
+    public static final DeferredObject<BlockEntityType<WallBlockEntity>> TYPE =
+            new DeferredObject<BlockEntityType<WallBlockEntity>>(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), new SpecialWallBlock(null));
 
     private Block eastBlock = Blocks.AIR;
     private Block westBlock = Blocks.AIR;

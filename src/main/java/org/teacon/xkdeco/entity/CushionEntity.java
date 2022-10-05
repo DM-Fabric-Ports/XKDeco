@@ -23,7 +23,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.DeferredObject;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
@@ -34,14 +34,14 @@ import java.util.Objects;
 
 public final class CushionEntity extends Entity {
     private static final EntityDataSerializer<Vec3> LOCATION_DATA_SERIALIZER;
-    public static final RegistryObject<EntityType<CushionEntity>> TYPE;
+    public static final DeferredObject<EntityType<CushionEntity>> TYPE;
     private static final EntityDataAccessor<Vec3> DATA_DIFF_LOCATION;
     static final double MAX_DISTANCE = 3.0;
 
     static {
         LOCATION_DATA_SERIALIZER = new Vec3Serializer();
         EntityDataSerializers.registerSerializer(LOCATION_DATA_SERIALIZER);
-        TYPE = RegistryObject.of(new ResourceLocation(XKDeco.ID, XKDecoObjects.CUSHION_ENTITY), ForgeRegistries.ENTITIES);
+        TYPE = DeferredObject.of(new ResourceLocation(XKDeco.ID, XKDecoObjects.CUSHION_ENTITY), ForgeRegistries.ENTITIES);
         DATA_DIFF_LOCATION = SynchedEntityData.defineId(CushionEntity.class, LOCATION_DATA_SERIALIZER);
     }
 

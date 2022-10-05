@@ -42,7 +42,7 @@ public final class SpecialLightBar extends StairBlock implements XKDecoBlock.Spe
     private static final VoxelShape WN_BOTTOM_OUTER = Shapes.join(NORTH_BOTTOM, WEST_BOTTOM, BooleanOp.AND);
 
     public SpecialLightBar(Properties properties) {
-        super(Blocks.AIR::defaultBlockState, properties);
+        super(Blocks.AIR.defaultBlockState(), properties);
     }
 
     @Override

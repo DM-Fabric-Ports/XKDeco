@@ -23,23 +23,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.teacon.xkdeco.XKDeco;
+import org.teacon.xkdeco.block.SpecialBlockDisplayBlock;
 
+import com.dm.earth.deferred_registries.DeferredObject;
 
 import java.util.Objects;
 import java.util.Optional;
 
 import static org.teacon.xkdeco.init.XKDecoObjects.BLOCK_DISPLAY_BLOCK_ENTITY;
+import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 @MethodsReturnNonnullByDefault
-
 public final class BlockDisplayBlockEntity extends BlockEntity implements Clearable {
-    public static final RegistryObject<BlockEntityType<BlockDisplayBlockEntity>> TYPE =
-            RegistryObject.of(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), ForgeRegistries.BLOCK_ENTITIES);
+    public static final DeferredObject<BlockEntityType<BlockDisplayBlockEntity>> TYPE =
+            new DeferredObject<BlockEntityType<BlockDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new, new SpecialBlockDisplayBlock(BLOCK_STONE_DISPLAY), new SpecialBlockDisplayBlock(BLOCK_METAL_DISPLAY)).build());
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String BLOCKSTATE_NBT_KEY = "State";
     private static final String SELECTED_PROPERTY_NBT_KEY = "Selected";
@@ -56,7 +57,7 @@ public final class BlockDisplayBlockEntity extends BlockEntity implements Cleara
         super(TYPE.get(), pWorldPosition, pBlockState);
     }
 
-    @Override
+    // @Override
     public AABB getRenderBoundingBox() {
         return AABB.unitCubeFromLowerCorner(Vec3.atLowerCornerOf(this.getBlockPos().above()));
     }
@@ -107,7 +108,7 @@ public final class BlockDisplayBlockEntity extends BlockEntity implements Cleara
                 be -> ((BlockDisplayBlockEntity) be).writeNbtPacket(null));
     }
 
-    @Override
+    // @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         readNbtPacket(pkt.getTag());
     }
@@ -117,7 +118,7 @@ public final class BlockDisplayBlockEntity extends BlockEntity implements Cleara
         return writeNbtPacket(null);
     }
 
-    @Override
+    // @Override
     public void handleUpdateTag(CompoundTag tag) {
         readNbtPacket(tag);
     }

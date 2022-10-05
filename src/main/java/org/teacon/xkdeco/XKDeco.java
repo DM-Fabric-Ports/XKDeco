@@ -1,6 +1,7 @@
 package org.teacon.xkdeco;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -20,6 +21,10 @@ public final class XKDeco implements ModInitializer{
 	@Override
 	public void onInitialize(ModContainer mod) {
 
+	}
+
+	public static ResourceLocation asResource(String path) {
+		return new ResourceLocation(ID, path);
 	}
 
     // public XKDeco() {
