@@ -1,7 +1,6 @@
 package org.teacon.xkdeco.init;
 
 import com.dm.earth.deferred_registries.DeferredRegistries;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -37,15 +35,11 @@ import org.teacon.xkdeco.blockentity.WardrobeBlockEntity;
 import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
-
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 @MethodsReturnNonnullByDefault
-
 public final class XKDecoObjects {
     public static final DeferredRegistries<EntityType<?>> ENTITIES = DeferredRegistries.create(Registry.ENTITY_TYPE, XKDeco.ID);
     public static final DeferredRegistries<Block> BLOCKS = DeferredRegistries.create(Registry.BLOCK, XKDeco.ID);
@@ -280,7 +274,7 @@ public final class XKDecoObjects {
 			if (BlockTags.WALLS.equals(set.getKey())) {
 				List<RegistryAccess.RegistryEntry<T>> list = set.getValue();
 				for (var blockSet : Registry.BLOCK.entrySet()) {
-					if (blockSet.getValue() instanceof SpecialWallBlock block) {
+					if (blockSet.getValue() instanceof SpecialWallBlock) {
 						list.add(new RegistryAccess.RegistryEntry<>(ResourceKey.createRegistryKey(blockSet.getKey().registry()), set.getValue().get(0).value()));
 					}
                 }

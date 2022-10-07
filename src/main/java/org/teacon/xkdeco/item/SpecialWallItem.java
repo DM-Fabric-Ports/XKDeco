@@ -6,16 +6,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.IItemRenderProperties;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.block.SpecialWallBlock;
 import org.teacon.xkdeco.client.renderer.XKDecoWithoutLevelRenderer;
-
-
 import java.util.function.Consumer;
 
 @MethodsReturnNonnullByDefault
-
 public final class SpecialWallItem extends BlockItem {
     public SpecialWallItem(SpecialWallBlock pBlock, Properties pProperties) {
         super(pBlock, pProperties);
@@ -26,13 +22,13 @@ public final class SpecialWallItem extends BlockItem {
         return new TranslatableComponent("block." + XKDeco.ID + ".special_wall", super.getName(pStack));
     }
 
-    @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-        consumer.accept(new IItemRenderProperties() {
-            @Override
-            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
-                return XKDecoWithoutLevelRenderer.INSTANCE;
-            }
-        });
-    }
+//    @Override
+//    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+//        consumer.accept(new IItemRenderProperties() {
+//            @Override
+//            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+//                return XKDecoWithoutLevelRenderer.INSTANCE;
+//            }
+//        });
+//    }
 }
