@@ -8,8 +8,11 @@ import com.mojang.datafixers.DSL;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
@@ -35,9 +38,7 @@ import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -274,20 +275,18 @@ public final class XKDecoObjects {
     }
 
 	//TODO: impl tags
-    public static void addSpecialWallTags() {
-        var registry = event.getTagManager().registryOrThrow(Registry.BLOCKS.getRegistryKey());
-        registry.bindTags(registry.getTagNames().collect(Collectors.toMap(Function.identity(), tagKey -> {
-            var tags = Lists.newArrayList(registry.getTagOrEmpty(tagKey));
-            if (BlockTags.WALLS.equals(tagKey)) {
-                for (var block : Registry.BLOCKS.getValues()) {
-                    if (block instanceof SpecialWallBlock) {
-                        tags.add(Registry.BLOCKS.getHolder(block).orElseThrow());
-                    }
+    public static <T> void addSpecialWallTags(Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> registryEntries) {
+		for (var set : registryEntries.entrySet()) {
+			if (BlockTags.WALLS.equals(set.getKey())) {
+				List<RegistryAccess.RegistryEntry<T>> list = set.getValue();
+				for (var blockSet : Registry.BLOCK.entrySet()) {
+					if (blockSet.getValue() instanceof SpecialWallBlock block) {
+						list.add(new RegistryAccess.RegistryEntry<>(ResourceKey.createRegistryKey(blockSet.getKey().registry()), set.getValue().get(0).value()));
+					}
                 }
-            }
-            return tags;
-        })));
-        Blocks.rebuildCache();
+				registryEntries.replace(set.getKey(), list);
+			}
+		}
     }
 
     @FunctionalInterface
