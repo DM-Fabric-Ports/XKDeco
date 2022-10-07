@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.teacon.xkdeco.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MappedRegistryMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

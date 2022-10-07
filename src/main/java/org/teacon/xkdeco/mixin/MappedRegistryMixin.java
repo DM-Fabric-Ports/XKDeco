@@ -2,7 +2,6 @@ package org.teacon.xkdeco.mixin;
 
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
 import net.minecraft.tags.TagKey;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

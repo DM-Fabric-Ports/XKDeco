@@ -1,0 +1,35 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "org.teacon",
+		"id": "xkdeco",
+		"version": "${version}",
+		"metadata": {
+			"name": "XeKr's Decorations",
+			"description": "XeKr's Decorations for Minecraft 1.18. Models and textures are created by XeKr.",
+			"contributors": {
+				"TeaConMC": "Owner"
+			},
+			"contact": {
+				"source": "https://quiltmc.org"
+			},
+			"license": "BSD-3-Clause"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": "*"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.18.2-"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=1.0.0-"
+			}
+		]
+	},
+	"mixin": "xkdeco.mixins.json"
+}
