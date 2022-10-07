@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 
-import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents.TagsLoaded;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -226,21 +225,21 @@ public final class XKDecoObjects {
 
     private static void addDisplayBlockEntity() {
         BLOCK_ENTITY.register(ITEM_DISPLAY_BLOCK_ENTITY,
-                BlockEntityType.Builder.of(ItemDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(DeferredObject::get)
+                QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new,
+                        BLOCKS.getEntries().stream()
                                 .filter(b -> b instanceof SpecialItemDisplayBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
         BLOCK_ENTITY.register(BLOCK_DISPLAY_BLOCK_ENTITY, () ->
-                BlockEntityType.Builder.of(BlockDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(DeferredObject::get)
+				QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new,
+                        BLOCKS.getEntries().stream()
                                 .filter(b -> b instanceof SpecialBlockDisplayBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
     }
 
     private static void addWardrobeBlockEntity() {
         BLOCK_ENTITY.register(WARDROBE_BLOCK_ENTITY,
-                () -> BlockEntityType.Builder.of(WardrobeBlockEntity::new,
-                        BLOCKS.getEntries().stream().map(DeferredObject::get)
+                () -> QuiltBlockEntityTypeBuilder.create(WardrobeBlockEntity::new,
+                        BLOCKS.getEntries().stream()
                                 .filter(b -> b instanceof SpecialWardrobeBlock)
                                 .toArray(Block[]::new)).build(DSL.remainderType()));
     }
@@ -263,7 +262,6 @@ public final class XKDecoObjects {
         for (var set : Registry.BLOCK.entrySet()) {
 			Block block = set.getValue();
             if (block instanceof SpecialWallBlock wall) {
-            //    var registryName = Objects.requireNonNull(block.getName());
 				Registry.register(Registry.ITEM, set.getKey().location(), new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE));
             }
         }

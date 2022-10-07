@@ -8,8 +8,13 @@ version = project.version
 group = project.maven_group
 
 repositories {
-	maven { url 'https://jitpack.io' }
-	flatDir { dir "libs/deferred_registries" }
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+		content {
+			includeGroup "maven.modrinth"
+		}
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -26,7 +31,7 @@ dependencies {
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
 
-	modImplementation include("com.dm.earth:deferred_registries:0.1.0")
+	modImplementation include("maven.modrinth:deferred-registries:0.1.1")
 }
 
 processResources {
