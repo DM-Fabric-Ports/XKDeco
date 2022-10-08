@@ -14,15 +14,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -44,13 +39,8 @@ public final class CushionEntity extends Entity {
     static {
         LOCATION_DATA_SERIALIZER = new Vec3Serializer();
         EntityDataSerializers.registerSerializer(LOCATION_DATA_SERIALIZER);
-		TYPE = new DeferredObject<>(XKDeco.asResource(XKDecoObjects.CUSHION_ENTITY), FabricEntityTypeBuilder.create().build());
+		TYPE = new DeferredObject<>(XKDeco.asResource(XKDecoObjects.CUSHION_ENTITY), FabricEntityTypeBuilder.create(MobCategory.MISC, CushionEntity::new).dimensions(EntityDimensions.fixed(1F / 256F, 1F / 256F)).trackRangeBlocks(256).build());
         DATA_DIFF_LOCATION = SynchedEntityData.defineId(CushionEntity.class, LOCATION_DATA_SERIALIZER);
-    }
-
-    public CushionEntity(EntityType<CushionEntity> type, Level world) {
-        super(type, world);
-        this.noPhysics = true;
     }
 
     public CushionEntity(BlockPos pos, Player player) {
@@ -61,6 +51,11 @@ public final class CushionEntity extends Entity {
         player.setPos(this.position());
         player.startRiding(this);
     }
+
+	public CushionEntity(EntityType<Entity> entityEntityType, Level level) {
+		super(entityEntityType, level);
+		this.noPhysics = true;
+	}
 
 	private Vec3 calculateStandingDiff(Entity entity) {
         if (!entity.isPassenger()) {

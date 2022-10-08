@@ -96,9 +96,7 @@ public final class XKDecoObjects {
     public static final String ITEM_PROJECTOR_SPECIAL = "item_projector";
 
     private static void addCushionEntity() {
-        ENTITIES.register(CUSHION_ENTITY, EntityType.Builder
-                .<CushionEntity>of(CushionEntity::new, MobCategory.MISC).sized(1F / 256F, 1F / 256F)
-                .clientTrackingRange(256).build(new ResourceLocation(XKDeco.ID, CUSHION_ENTITY).toString()));
+        ENTITIES.register(CUSHION_ENTITY, CushionEntity.TYPE.get());
     }
 
     private static void addBasic(String id, ShapeFunction shapeFunction, boolean isSupportNeeded,
@@ -227,21 +225,19 @@ public final class XKDecoObjects {
     }
 
     public static void addSpecialWallBlocks() {
-        for (var set : Registry.BLOCK.entrySet()) {
-			Block block = set.getValue();
-            if (block instanceof WallBlock wall) {
-                var registryName = Objects.requireNonNull(set.getKey().location());
-                if (!"minecraft".equals(registryName.getNamespace())) {
-                    continue;
-                }
-                var name = SPECIAL_WALL_PREFIX + registryName.toString().replace(':', '_');
-				Registry.register(Registry.BLOCK, XKDeco.asResource(name), new SpecialWallBlock(wall));
-            }
-        }
+		Registry.BLOCK.forEach(block -> {
+			if (block instanceof WallBlock wall) {
+				var registryName = Registry.BLOCK.getKey(block);
+				if ("minecraft".equals(registryName.getNamespace())) {
+					var name = SPECIAL_WALL_PREFIX + registryName.toString().replace(':', '_');
+					Registry.register(Registry.BLOCK, XKDeco.asResource(name), new SpecialWallBlock(wall));
+				}
+			}
+		});
     }
 
     public static void addSpecialWallItems() {
-        for (var set : Registry.BLOCK.entrySet()) {
+        for (Map.Entry<ResourceKey<Block>, Block> set : Registry.BLOCK.entrySet()) {
 			Block block = set.getValue();
             if (block instanceof SpecialWallBlock wall) {
 				Registry.register(Registry.ITEM, set.getKey().location(), new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE));
@@ -254,7 +250,6 @@ public final class XKDecoObjects {
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, registryName, WallBlockEntity.TYPE.get());
 	}
 
-	//TODO: impl tags
     public static <T> void addSpecialWallTags(Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> registryEntries) {
 		for (var set : registryEntries.entrySet()) {
 			if (BlockTags.WALLS.equals(set.getKey())) {

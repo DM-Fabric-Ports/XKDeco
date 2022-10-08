@@ -86,12 +86,13 @@ publishing {
 	}
 }
 
-sourceSets {
-	main {
-		resources {
-			srcDirs += [
-					'src/main/generated'
-			]
+loom {
+	sourceSets {
+		main {
+			resources {
+				srcDir("src/generated/resources")
+			}
 		}
 	}
 }
+
