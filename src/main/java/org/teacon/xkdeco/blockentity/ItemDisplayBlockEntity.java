@@ -43,7 +43,7 @@ public final class ItemDisplayBlockEntity extends BlockEntity implements Clearab
             new DeferredObject<BlockEntityType<ItemDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, ITEM_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new,
 					XKDecoObjects.BLOCKS.getEntries().stream()
 							.filter(b -> b instanceof SpecialItemDisplayBlock)
-							.toArray(Block[]::new)).build(DSL.remainderType()));
+							.toArray(Block[]::new)).build());
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String SPIN_NBT_KEY = "Spin";
 

@@ -46,7 +46,7 @@ public final class BlockDisplayBlockEntity extends BlockEntity implements Cleara
             new DeferredObject<BlockEntityType<BlockDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new,
 					XKDecoObjects.BLOCKS.getEntries().stream()
 							.filter(b -> b instanceof SpecialBlockDisplayBlock)
-							.toArray(Block[]::new)).build(DSL.remainderType()));
+							.toArray(Block[]::new)).build());
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String BLOCKSTATE_NBT_KEY = "State";
     private static final String SELECTED_PROPERTY_NBT_KEY = "Selected";

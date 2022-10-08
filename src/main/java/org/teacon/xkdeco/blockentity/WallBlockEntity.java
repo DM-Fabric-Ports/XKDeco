@@ -27,7 +27,7 @@ import static org.teacon.xkdeco.init.XKDecoProperties.*;
 @MethodsReturnNonnullByDefault
 public final class WallBlockEntity extends BlockEntity {
     public static final DeferredObject<BlockEntityType<WallBlockEntity>> TYPE =
-            new DeferredObject<BlockEntityType<WallBlockEntity>>(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(WallBlockEntity::new, RegistryUtil.getBlockEntityBlocks(SpecialWallBlock.class)).build(DSL.remainderType()));
+            new DeferredObject<BlockEntityType<WallBlockEntity>>(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(WallBlockEntity::new, RegistryUtil.getBlockEntityBlocks(SpecialWallBlock.class)).build());
 
     private Block eastBlock = Blocks.AIR;
     private Block westBlock = Blocks.AIR;

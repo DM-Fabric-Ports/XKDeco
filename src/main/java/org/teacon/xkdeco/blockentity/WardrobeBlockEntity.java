@@ -24,7 +24,7 @@ public class WardrobeBlockEntity extends BlockEntity {
             new DeferredObject<BlockEntityType<WardrobeBlockEntity>>(XKDeco.asResource(WARDROBE_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(WardrobeBlockEntity::new,
 					XKDecoObjects.BLOCKS.getEntries().stream()
 							.filter(b -> b instanceof SpecialWardrobeBlock)
-							.toArray(Block[]::new)).build(DSL.remainderType()));
+							.toArray(Block[]::new)).build());
     public WardrobeBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(TYPE.get(), pWorldPosition, pBlockState);
     }
