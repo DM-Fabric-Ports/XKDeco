@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
@@ -19,7 +20,6 @@ import net.minecraft.world.level.block.Block;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org.quiltmc.qsl.resource.loader.api.ResourceLoader;
-import org.quiltmc.qsl.resource.loader.impl.ModResourcePackProvider;
 import org.teacon.xkdeco.block.XKDecoBlock;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
@@ -160,7 +160,8 @@ public final class XKDecoClient implements ClientModInitializer {
 
     public static void setAdditionalPackFinder(ResourceLoader resourceLoader) {
 		resourceLoader.registerResourcePackProfileProvider(((profileAdder, factory) -> {
-			profileAdder.accept(SpecialWallResources.create(factory));
+			Pack pack = SpecialWallResources.create(factory);
+			if (pack != null) profileAdder.accept(pack);
 		}));
     }
 }
