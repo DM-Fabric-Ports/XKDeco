@@ -1,7 +1,10 @@
 package org.teacon.xkdeco;
 
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -9,8 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.teacon.xkdeco.client.XKDecoClient;
-import org.teacon.xkdeco.data.XKDecoBlockStateProvider;
-import org.teacon.xkdeco.data.XKDecoEnUsLangProvider;
 import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
@@ -20,43 +21,26 @@ public final class XKDeco implements ModInitializer{
 
 	@Override
 	public void onInitialize(ModContainer mod) {
+		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+			CushionEntity.onRightClickBlock(player, world, hand, hitResult);
+			return InteractionResult.PASS;
+		});
 
+		PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
+			CushionEntity.onBreakBlock(world, pos);
+		});
+
+		XKDecoObjects.ENTITIES.register();
+		XKDecoObjects.BLOCKS.register();
+		XKDecoObjects.ITEMS.register();
+		XKDecoObjects.BLOCK_ENTITY.register();
+
+		XKDecoObjects.addSpecialWallBlocks();
+		XKDecoObjects.addSpecialWallItems();
+		XKDecoObjects.addSpecialWallBlockEntity();
 	}
 
 	public static ResourceLocation asResource(String path) {
 		return new ResourceLocation(ID, path);
 	}
-
-    // public XKDeco() {
-    //     // var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    //     // XKDecoObjects.ENTITIES.register(modEventBus);
-    //     // XKDecoObjects.BLOCKS.register(modEventBus);
-    //     // XKDecoObjects.ITEMS.register(modEventBus);
-    //     // XKDecoObjects.BLOCK_ENTITY.register(modEventBus);
-
-    //     modEventBus.addGenericListener(Block.class, EventPriority.LOWEST, XKDecoObjects::addSpecialWallBlocks);
-    //     modEventBus.addGenericListener(Item.class, EventPriority.LOWEST, XKDecoObjects::addSpecialWallItems);
-    //     modEventBus.addGenericListener(BlockEntityType.class, EventPriority.LOWEST, XKDecoObjects::addSpecialWallBlockEntity);
-
-    //     modEventBus.addListener(XKDecoBlockStateProvider::register);
-    //     modEventBus.addListener(XKDecoEnUsLangProvider::register);
-
-    //     if (FMLEnvironment.dist.isClient()) {
-    //         modEventBus.addListener(XKDecoClient::setItemColors);
-    //         modEventBus.addListener(XKDecoClient::setBlockColors);
-    //         modEventBus.addListener(XKDecoClient::setCutoutBlocks);
-    //         modEventBus.addListener(XKDecoClient::setItemRenderers);
-    //         modEventBus.addListener(XKDecoClient::setEntityRenderers);
-    //         modEventBus.addListener(XKDecoClient::setAdditionalPackFinder);
-    //     }
-
-    //     var forgeEventBus = MinecraftForge.EVENT_BUS;
-
-    //     forgeEventBus.addListener(XKDecoObjects::addSpecialWallTags);
-
-    //     forgeEventBus.addListener(CushionEntity::onRightClickBlock);
-    //     forgeEventBus.addListener(CushionEntity::onBreakBlock);
-    // }
-
-
 }

@@ -1,8 +1,11 @@
 package org.teacon.xkdeco.entity;
 
+import com.dm.earth.deferred_registries.DeferredObject;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
@@ -12,18 +15,18 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredObject;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.init.XKDecoObjects;
 
@@ -34,14 +37,14 @@ import java.util.Objects;
 
 public final class CushionEntity extends Entity {
     private static final EntityDataSerializer<Vec3> LOCATION_DATA_SERIALIZER;
-    public static final DeferredObject<EntityType<CushionEntity>> TYPE;
+    public static final DeferredObject<EntityType<Entity>> TYPE;
     private static final EntityDataAccessor<Vec3> DATA_DIFF_LOCATION;
     static final double MAX_DISTANCE = 3.0;
 
     static {
         LOCATION_DATA_SERIALIZER = new Vec3Serializer();
         EntityDataSerializers.registerSerializer(LOCATION_DATA_SERIALIZER);
-        TYPE = DeferredObject.of(new ResourceLocation(XKDeco.ID, XKDecoObjects.CUSHION_ENTITY), ForgeRegistries.ENTITIES);
+		TYPE = new DeferredObject<>(XKDeco.asResource(XKDecoObjects.CUSHION_ENTITY), FabricEntityTypeBuilder.create().build());
         DATA_DIFF_LOCATION = SynchedEntityData.defineId(CushionEntity.class, LOCATION_DATA_SERIALIZER);
     }
 
@@ -59,7 +62,7 @@ public final class CushionEntity extends Entity {
         player.startRiding(this);
     }
 
-    private Vec3 calculateStandingDiff(Entity entity) {
+	private Vec3 calculateStandingDiff(Entity entity) {
         if (!entity.isPassenger()) {
             var diff = entity.position().add(0.0, 0.5, 0.0).subtract(this.position());
             return diff.lengthSqr() > MAX_DISTANCE ? diff.normalize().scale(Math.sqrt(MAX_DISTANCE)) : diff;
@@ -119,12 +122,10 @@ public final class CushionEntity extends Entity {
         }
     }
 
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        var world = event.getWorld();
+    public static void onRightClickBlock(Player player, Level world, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide()) {
-            var pos = event.getPos();
-            var player = event.getPlayer();
-            if (event.getFace() == Direction.UP && !player.isShiftKeyDown()) {
+            var pos = hit.getBlockPos();
+            if (hit.getDirection() == Direction.UP && !player.isShiftKeyDown()) {
                 var cushions = world.getEntitiesOfClass(CushionEntity.class, new AABB(pos));
                 if (cushions.isEmpty() && canBlockBeSeated(world.getBlockState(pos))) {
                     world.addFreshEntity(new CushionEntity(pos, player));
@@ -134,7 +135,7 @@ public final class CushionEntity extends Entity {
     }
 
     private static boolean canBlockBeSeated(BlockState state) {
-        var name = Objects.requireNonNull(state.getBlock().getRegistryName());
+        var name = Objects.requireNonNull(Registry.BLOCK.getKey(state.getBlock()));
         if (XKDeco.ID.equals(name.getNamespace())) {
             var id = name.getPath();
             return id.contains(XKDecoObjects.CHAIR_SUFFIX) || id.contains(XKDecoObjects.STOOL_SUFFIX);
@@ -142,10 +143,8 @@ public final class CushionEntity extends Entity {
         return false;
     }
 
-    public static void onBreakBlock(BlockEvent.BreakEvent event) {
-        final var world = event.getWorld();
+    public static void onBreakBlock(Level world, BlockPos pos) {
         if (!world.isClientSide()) {
-            var pos = event.getPos();
             var cushions = world.getEntitiesOfClass(CushionEntity.class, new AABB(pos));
             for (var cushion : cushions) {
                 cushion.remove(RemovalReason.DISCARDED);

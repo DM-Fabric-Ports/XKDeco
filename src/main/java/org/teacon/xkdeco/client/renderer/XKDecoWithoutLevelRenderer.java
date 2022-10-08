@@ -8,8 +8,12 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
+import org.quiltmc.qsl.resource.loader.api.reloader.IdentifiableResourceReloader;
+import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.blockentity.WallBlockEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
@@ -17,7 +21,7 @@ import org.teacon.xkdeco.item.SpecialWallItem;
 
 @MethodsReturnNonnullByDefault
 
-public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer {
+public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer implements IdentifiableResourceReloader {
     public static final XKDecoWithoutLevelRenderer INSTANCE = new XKDecoWithoutLevelRenderer(Minecraft.getInstance());
 
     private final BlockEntityRenderDispatcher dispatcher;
@@ -37,4 +41,9 @@ public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRen
             super.renderByItem(pStack, pTransformType, pPose, pBuffer, pLight, pOverlay);
         }
     }
+
+	@Override
+	public @NotNull ResourceLocation getQuiltId() {
+		return XKDeco.asResource("without_level_renderer");
+	}
 }

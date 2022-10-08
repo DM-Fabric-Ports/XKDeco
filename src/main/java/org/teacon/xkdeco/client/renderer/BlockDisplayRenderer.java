@@ -9,15 +9,12 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.LightLayer;
-import net.minecraftforge.client.model.data.EmptyModelData;
 import org.jetbrains.annotations.NotNull;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
-
 
 import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
-
 public final class BlockDisplayRenderer implements BlockEntityRenderer<BlockDisplayBlockEntity> {
     private final BlockRenderDispatcher blockRenderer;
     private static final float BLOCK_SCALE = 0.99f;
@@ -40,7 +37,7 @@ public final class BlockDisplayRenderer implements BlockEntityRenderer<BlockDisp
         pPoseStack.scale(BLOCK_SCALE, BLOCK_SCALE, BLOCK_SCALE);
         var delta = (1 - BLOCK_SCALE) / 2;
         pPoseStack.translate(delta, 1, delta);
-        blockRenderer.renderSingleBlock(state, pPoseStack, pBufferSource, packedLight, pPackedOverlay, EmptyModelData.INSTANCE);
+        blockRenderer.renderSingleBlock(state, pPoseStack, pBufferSource, packedLight, pPackedOverlay);
 
         pPoseStack.popPose();
     }

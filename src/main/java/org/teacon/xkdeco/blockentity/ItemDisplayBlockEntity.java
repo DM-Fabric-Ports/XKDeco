@@ -4,6 +4,7 @@
  */
 package org.teacon.xkdeco.blockentity;
 
+import com.mojang.datafixers.DSL;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -15,6 +16,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,6 +29,7 @@ import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.block.SpecialItemDisplayBlock;
 
 import com.dm.earth.deferred_registries.DeferredObject;
+import org.teacon.xkdeco.init.XKDecoObjects;
 
 import java.util.Objects;
 
@@ -37,7 +40,10 @@ import static org.teacon.xkdeco.init.XKDecoProperties.*;
 
 public final class ItemDisplayBlockEntity extends BlockEntity implements Clearable {
     public static final DeferredObject<BlockEntityType<ItemDisplayBlockEntity>> TYPE =
-            new DeferredObject<BlockEntityType<ItemDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, ITEM_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new, new SpecialItemDisplayBlock(BLOCK_STONE_DISPLAY), new SpecialItemDisplayBlock(BLOCK_METAL_DISPLAY)).build(null));
+            new DeferredObject<BlockEntityType<ItemDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, ITEM_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new,
+					XKDecoObjects.BLOCKS.getEntries().stream()
+							.filter(b -> b instanceof SpecialItemDisplayBlock)
+							.toArray(Block[]::new)).build(DSL.remainderType()));
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String SPIN_NBT_KEY = "Spin";
 

@@ -4,6 +4,7 @@
  */
 package org.teacon.xkdeco.blockentity;
 
+import com.mojang.datafixers.DSL;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,6 +32,7 @@ import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.block.SpecialBlockDisplayBlock;
 
 import com.dm.earth.deferred_registries.DeferredObject;
+import org.teacon.xkdeco.init.XKDecoObjects;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -40,7 +43,10 @@ import static org.teacon.xkdeco.init.XKDecoProperties.*;
 @MethodsReturnNonnullByDefault
 public final class BlockDisplayBlockEntity extends BlockEntity implements Clearable {
     public static final DeferredObject<BlockEntityType<BlockDisplayBlockEntity>> TYPE =
-            new DeferredObject<BlockEntityType<BlockDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new, new SpecialBlockDisplayBlock(BLOCK_STONE_DISPLAY), new SpecialBlockDisplayBlock(BLOCK_METAL_DISPLAY)).build());
+            new DeferredObject<BlockEntityType<BlockDisplayBlockEntity>>(new ResourceLocation(XKDeco.ID, BLOCK_DISPLAY_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new,
+					XKDecoObjects.BLOCKS.getEntries().stream()
+							.filter(b -> b instanceof SpecialBlockDisplayBlock)
+							.toArray(Block[]::new)).build(DSL.remainderType()));
     public static final String ITEMSTACK_NBT_KEY = "Display";
     private static final String BLOCKSTATE_NBT_KEY = "State";
     private static final String SELECTED_PROPERTY_NBT_KEY = "Selected";

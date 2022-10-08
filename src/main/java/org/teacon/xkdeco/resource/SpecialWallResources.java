@@ -1,19 +1,19 @@
 package org.teacon.xkdeco.resource;
 
 import com.google.gson.JsonParser;
+import net.fabricmc.fabric.api.resource.ModResourcePack;
 import net.minecraft.FileUtil;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.init.XKDecoObjects;
-
-import javax.annotation.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +26,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 @MethodsReturnNonnullByDefault
-
 public final class SpecialWallResources implements PackResources {
     private static final String BLOCK_MODEL_LOCATION = XKDeco.ID + ":block/" + XKDecoObjects.WALL_BLOCK_ENTITY;
     private static final String ITEM_MODEL_LOCATION = XKDeco.ID + ":item/" + XKDecoObjects.WALL_BLOCK_ENTITY;
@@ -58,13 +57,13 @@ public final class SpecialWallResources implements PackResources {
         if (pType == PackType.CLIENT_RESOURCES && pLocation.getNamespace().equals(XKDeco.ID)) {
             if (path.startsWith("blockstates/" + XKDecoObjects.SPECIAL_WALL_PREFIX) && path.endsWith(".json")) {
                 var id = new ResourceLocation(XKDeco.ID, path.substring("blockstates/".length(), path.length() - 5));
-                if (ForgeRegistries.BLOCKS.containsKey(id)) {
+                if (Registry.BLOCK.containsKey(id)) {
                     return new ByteArrayInputStream(BLOCK_MODEL.getBytes(StandardCharsets.UTF_8));
                 }
             }
             if (path.startsWith("models/item/" + XKDecoObjects.SPECIAL_WALL_PREFIX) && path.endsWith(".json")) {
                 var id = new ResourceLocation(XKDeco.ID, path.substring("models/item/".length(), path.length() - 5));
-                if (ForgeRegistries.BLOCKS.containsKey(id)) {
+                if (Registry.BLOCK.containsKey(id)) {
                     return new ByteArrayInputStream(ITEM_MODEL.getBytes(StandardCharsets.UTF_8));
                 }
             }
@@ -84,11 +83,11 @@ public final class SpecialWallResources implements PackResources {
         if (pType == PackType.CLIENT_RESOURCES && pLocation.getNamespace().equals(XKDeco.ID)) {
             if (path.startsWith("blockstates/" + XKDecoObjects.SPECIAL_WALL_PREFIX) && path.endsWith(".json")) {
                 var id = new ResourceLocation(XKDeco.ID, path.substring("blockstates/".length(), path.length() - 5));
-                return ForgeRegistries.BLOCKS.containsKey(id);
+                return Registry.BLOCK.containsKey(id);
             }
             if (path.startsWith("models/item/" + XKDecoObjects.SPECIAL_WALL_PREFIX) && path.endsWith(".json")) {
                 var id = new ResourceLocation(XKDeco.ID, path.substring("models/item/".length(), path.length() - 5));
-                return ForgeRegistries.BLOCKS.containsKey(id);
+                return Registry.BLOCK.containsKey(id);
             }
         }
         return false;
@@ -118,7 +117,7 @@ public final class SpecialWallResources implements PackResources {
         // do nothing here
     }
 
-    @Override
+//    @Override
     public boolean isHidden() {
         return true;
     }

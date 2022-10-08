@@ -6,7 +6,9 @@
   "mixins": [
     "MappedRegistryMixin"
   ],
-  "client": [],
+  "client": [
+    "ItemBlockRenderTypesMixin"
+  ],
   "injectors": {
     "defaultRequire": 0
   }

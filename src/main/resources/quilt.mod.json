@@ -16,6 +16,10 @@
 			"license": "BSD-3-Clause"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "org.teacon.xkdeco.XKDeco",
+			"client_init": "org.teacon.xkdeco.client.XKDecoClient"
+		},
 		"depends": [
 			{
 				"id": "quilt_loader",

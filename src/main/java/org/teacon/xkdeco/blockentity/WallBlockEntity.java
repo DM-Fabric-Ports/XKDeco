@@ -1,7 +1,9 @@
 package org.teacon.xkdeco.blockentity;
 
+import com.mojang.datafixers.DSL;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -10,7 +12,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.teacon.xkdeco.XKDeco;
+import org.teacon.xkdeco.api.util.RegistryUtil;
 import org.teacon.xkdeco.block.SpecialWallBlock;
 
 import com.dm.earth.deferred_registries.DeferredObject;
@@ -23,7 +27,7 @@ import static org.teacon.xkdeco.init.XKDecoProperties.*;
 @MethodsReturnNonnullByDefault
 public final class WallBlockEntity extends BlockEntity {
     public static final DeferredObject<BlockEntityType<WallBlockEntity>> TYPE =
-            new DeferredObject<BlockEntityType<WallBlockEntity>>(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), new SpecialWallBlock(null));
+            new DeferredObject<BlockEntityType<WallBlockEntity>>(new ResourceLocation(XKDeco.ID, WALL_BLOCK_ENTITY), QuiltBlockEntityTypeBuilder.create(WallBlockEntity::new, RegistryUtil.getBlockEntityBlocks(SpecialWallBlock.class)).build(DSL.remainderType()));
 
     private Block eastBlock = Blocks.AIR;
     private Block westBlock = Blocks.AIR;
@@ -63,14 +67,14 @@ public final class WallBlockEntity extends BlockEntity {
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        this.northBlock = Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getValue(new ResourceLocation(pTag.getString("NorthBlockName"))), Blocks.AIR);
-        this.eastBlock = Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getValue(new ResourceLocation(pTag.getString("EastBlockName"))), Blocks.AIR);
-        this.southBlock = Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getValue(new ResourceLocation(pTag.getString("SouthBlockName"))), Blocks.AIR);
-        this.westBlock = Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getValue(new ResourceLocation(pTag.getString("WestBlockName"))), Blocks.AIR);
+        this.northBlock = Objects.requireNonNullElse(Registry.BLOCK
+				.get(new ResourceLocation(pTag.getString("NorthBlockName"))), Blocks.AIR);
+        this.eastBlock = Objects.requireNonNullElse(Registry.BLOCK
+                .get(new ResourceLocation(pTag.getString("EastBlockName"))), Blocks.AIR);
+        this.southBlock = Objects.requireNonNullElse(Registry.BLOCK
+                .get(new ResourceLocation(pTag.getString("SouthBlockName"))), Blocks.AIR);
+        this.westBlock = Objects.requireNonNullElse(Registry.BLOCK
+                .get(new ResourceLocation(pTag.getString("WestBlockName"))), Blocks.AIR);
         if (this.getBlockState().getBlock() instanceof SpecialWallBlock wall) {
             this.updateBlocksFromLevel(wall);
         }
@@ -79,13 +83,13 @@ public final class WallBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
-        pTag.putString("NorthBlockName", Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getKey(this.northBlock), ForgeRegistries.BLOCKS.getKey(Blocks.AIR)).toString());
-        pTag.putString("EastBlockName", Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getKey(this.eastBlock), ForgeRegistries.BLOCKS.getKey(Blocks.AIR)).toString());
-        pTag.putString("SouthBlockName", Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getKey(this.southBlock), ForgeRegistries.BLOCKS.getKey(Blocks.AIR)).toString());
-        pTag.putString("WestBlockName", Objects.requireNonNullElse(ForgeRegistries.BLOCKS
-                .getKey(this.westBlock), ForgeRegistries.BLOCKS.getKey(Blocks.AIR)).toString());
+        pTag.putString("NorthBlockName", Objects.requireNonNullElse(Registry.BLOCK
+                .getKey(this.northBlock), Registry.BLOCK.getKey(Blocks.AIR)).toString());
+        pTag.putString("EastBlockName", Objects.requireNonNullElse(Registry.BLOCK
+                .getKey(this.eastBlock), Registry.BLOCK.getKey(Blocks.AIR)).toString());
+        pTag.putString("SouthBlockName", Objects.requireNonNullElse(Registry.BLOCK
+                .getKey(this.southBlock), Registry.BLOCK.getKey(Blocks.AIR)).toString());
+        pTag.putString("WestBlockName", Objects.requireNonNullElse(Registry.BLOCK
+                .getKey(this.westBlock), Registry.BLOCK.getKey(Blocks.AIR)).toString());
     }
 }

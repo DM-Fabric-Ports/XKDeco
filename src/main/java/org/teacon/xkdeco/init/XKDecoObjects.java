@@ -2,7 +2,6 @@ package org.teacon.xkdeco.init;
 
 import com.dm.earth.deferred_registries.DeferredRegistries;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
@@ -24,7 +23,6 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.api.util.RegistryUtil;
 import org.teacon.xkdeco.block.*;
@@ -219,24 +217,13 @@ public final class XKDecoObjects {
     }
 
     private static void addDisplayBlockEntity() {
-        BLOCK_ENTITY.register(ITEM_DISPLAY_BLOCK_ENTITY,
-                QuiltBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream()
-                                .filter(b -> b instanceof SpecialItemDisplayBlock)
-                                .toArray(Block[]::new)).build(DSL.remainderType()));
-        BLOCK_ENTITY.register(BLOCK_DISPLAY_BLOCK_ENTITY, () ->
-				QuiltBlockEntityTypeBuilder.create(BlockDisplayBlockEntity::new,
-                        BLOCKS.getEntries().stream()
-                                .filter(b -> b instanceof SpecialBlockDisplayBlock)
-                                .toArray(Block[]::new)).build(DSL.remainderType()));
+        BLOCK_ENTITY.register(ITEM_DISPLAY_BLOCK_ENTITY, ItemDisplayBlockEntity.TYPE::get);
+        BLOCK_ENTITY.register(BLOCK_DISPLAY_BLOCK_ENTITY, BlockDisplayBlockEntity.TYPE::get);
     }
 
     private static void addWardrobeBlockEntity() {
         BLOCK_ENTITY.register(WARDROBE_BLOCK_ENTITY,
-                () -> QuiltBlockEntityTypeBuilder.create(WardrobeBlockEntity::new,
-                        BLOCKS.getEntries().stream()
-                                .filter(b -> b instanceof SpecialWardrobeBlock)
-                                .toArray(Block[]::new)).build(DSL.remainderType()));
+				WardrobeBlockEntity.TYPE::get);
     }
 
     public static void addSpecialWallBlocks() {
@@ -263,10 +250,9 @@ public final class XKDecoObjects {
     }
 
     public static void addSpecialWallBlockEntity() {
-        var blocks = RegistryUtil.getBlockEntityBlocks(SpecialWallBlock.class);
         var registryName = XKDeco.asResource(WALL_BLOCK_ENTITY);
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, registryName, QuiltBlockEntityTypeBuilder.create(WallBlockEntity::new, blocks).build(DSL.remainderType()));
-    }
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, registryName, WallBlockEntity.TYPE.get());
+	}
 
 	//TODO: impl tags
     public static <T> void addSpecialWallTags(Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> registryEntries) {
