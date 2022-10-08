@@ -237,12 +237,12 @@ public final class XKDecoObjects {
     }
 
     public static void addSpecialWallItems() {
-        for (Map.Entry<ResourceKey<Block>, Block> set : Registry.BLOCK.entrySet()) {
-			Block block = set.getValue();
-            if (block instanceof SpecialWallBlock wall) {
-				Registry.register(Registry.ITEM, set.getKey().location(), new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE));
-            }
-        }
+        Registry.BLOCK.entrySet().forEach(entry -> {
+			Block block = entry.getValue();
+			if (block instanceof SpecialWallBlock wall) {
+				Registry.register(Registry.ITEM, entry.getKey().location(), new SpecialWallItem(wall, XKDecoProperties.ITEM_STRUCTURE));
+			}
+		});
     }
 
     public static void addSpecialWallBlockEntity() {

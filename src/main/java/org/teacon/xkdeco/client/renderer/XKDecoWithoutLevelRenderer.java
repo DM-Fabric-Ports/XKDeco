@@ -17,10 +17,7 @@ import org.teacon.xkdeco.XKDeco;
 import org.teacon.xkdeco.blockentity.WallBlockEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
-
-
 @MethodsReturnNonnullByDefault
-
 public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer implements IdentifiableResourceReloader {
     public static final XKDecoWithoutLevelRenderer INSTANCE = new XKDecoWithoutLevelRenderer(Minecraft.getInstance());
 

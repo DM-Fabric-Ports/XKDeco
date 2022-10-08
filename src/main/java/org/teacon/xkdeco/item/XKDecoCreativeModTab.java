@@ -18,4 +18,8 @@ public final class XKDecoCreativeModTab {
     private static ItemStack makeIcon(String itemId) {
         return Registry.ITEM.get(XKDeco.asResource(itemId)).getDefaultInstance();
     }
+
+	public static void init() {
+		// NO-OP
+	}
 }

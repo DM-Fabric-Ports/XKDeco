@@ -2,9 +2,11 @@ package org.teacon.xkdeco;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -14,6 +16,7 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.teacon.xkdeco.client.XKDecoClient;
 import org.teacon.xkdeco.entity.CushionEntity;
 import org.teacon.xkdeco.init.XKDecoObjects;
+import org.teacon.xkdeco.item.XKDecoCreativeModTab;
 
 @MethodsReturnNonnullByDefault
 public final class XKDeco implements ModInitializer{
@@ -29,6 +32,8 @@ public final class XKDeco implements ModInitializer{
 		PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
 			CushionEntity.onBreakBlock(world, pos);
 		});
+
+		XKDecoCreativeModTab.init();
 
 		XKDecoObjects.ENTITIES.register();
 		XKDecoObjects.BLOCKS.register();
