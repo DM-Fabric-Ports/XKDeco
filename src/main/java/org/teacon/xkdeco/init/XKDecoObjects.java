@@ -175,8 +175,7 @@ public final class XKDecoObjects {
         }
     }
 
-    private static void addSpecial(String id,
-                                   BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+    private static void addSpecial(String id, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         if (id.equals(CUP_SPECIAL)) {
             var block = BLOCKS.register(id, () -> new SpecialCupBlock(properties));
             ITEMS.register(id, () -> new BlockItem(block.get(), itemProperties));
