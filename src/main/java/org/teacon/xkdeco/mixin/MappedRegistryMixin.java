@@ -18,7 +18,8 @@ public class MappedRegistryMixin<T> {
 	private Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> addEntries(Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> entries) {
 		if (entries instanceof HashMap<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>>) return entries;
 		Map<TagKey<T>, List<RegistryAccess.RegistryEntry<T>>> newEntries = Map.copyOf(entries);
-		XKDecoObjects.addSpecialWallTags(newEntries);
+		//TODO: impl tags. broken here
+		//XKDecoObjects.addSpecialWallTags(newEntries);
 		return newEntries;
 	}
 }
