@@ -451,9 +451,9 @@
   "item.xkdeco.hologram_pictures": "Hologram Pictures",
   "item.xkdeco.hologram_planet": "Hologram Planet",
   "item.xkdeco.hologram_xekr_logo": "Hologram Xekr Logo",
-  "itemGroup.xkdeco_basic": "XKDeco: Basic",
-  "itemGroup.xkdeco_functional": "XKDeco: Functional",
-  "itemGroup.xkdeco_furniture": "XKDeco: Furniture",
-  "itemGroup.xkdeco_nature": "XKDeco: Nature",
-  "itemGroup.xkdeco_structure": "XKDeco: Structure"
+  "itemGroup.xkdeco.basic": "XKDeco: Basic",
+  "itemGroup.xkdeco.functional": "XKDeco: Functional",
+  "itemGroup.xkdeco.furniture": "XKDeco: Furniture",
+  "itemGroup.xkdeco.nature": "XKDeco: Nature",
+  "itemGroup.xkdeco.structure": "XKDeco: Structure"
 }
