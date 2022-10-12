@@ -31,7 +31,7 @@ dependencies {
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
 
-	modImplementation include("maven.modrinth:deferred-registries:0.1.1")
+	modImplementation include("maven.modrinth:deferred-registries:0.1.2")
 }
 
 processResources {

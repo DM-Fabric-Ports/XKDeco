@@ -18,7 +18,10 @@
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
 			"init": "org.teacon.xkdeco.XKDeco",
-			"client_init": "org.teacon.xkdeco.client.XKDecoClient"
+			"client_init": "org.teacon.xkdeco.client.XKDecoClient",
+			"client_events": [
+				"org.teacon.xkdeco.client.XKDecoClient"
+			]
 		},
 		"depends": [
 			{

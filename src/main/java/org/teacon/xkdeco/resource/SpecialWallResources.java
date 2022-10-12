@@ -72,8 +72,7 @@ public final class SpecialWallResources implements PackResources {
     }
 
     @Override
-    public Collection<ResourceLocation> getResources(PackType pType, String pNamespace,
-                                                     String pPath, int pMaxDepth, Predicate<String> pFilter) {
+    public Collection<ResourceLocation> getResources(PackType pType, String pNamespace, String pPath, int pMaxDepth, Predicate<String> pFilter) {
         return Collections.emptyList(); // TODO: list resources
     }
 

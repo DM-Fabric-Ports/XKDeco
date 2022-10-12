@@ -18,7 +18,7 @@ import org.teacon.xkdeco.blockentity.WallBlockEntity;
 import org.teacon.xkdeco.item.SpecialWallItem;
 
 @MethodsReturnNonnullByDefault
-public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer implements IdentifiableResourceReloader {
+public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer {
     public static final XKDecoWithoutLevelRenderer INSTANCE = new XKDecoWithoutLevelRenderer(Minecraft.getInstance());
 
     private final BlockEntityRenderDispatcher dispatcher;
@@ -39,7 +39,6 @@ public final class XKDecoWithoutLevelRenderer extends BlockEntityWithoutLevelRen
         }
     }
 
-	@Override
 	public @NotNull ResourceLocation getQuiltId() {
 		return XKDeco.asResource("without_level_renderer");
 	}

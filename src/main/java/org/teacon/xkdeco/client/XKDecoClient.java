@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
@@ -12,6 +13,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.resources.ReloadableResourceManager;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
@@ -20,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org.quiltmc.qsl.resource.loader.api.ResourceLoader;
+import org.quiltmc.qsl.resource.loader.api.client.ClientResourceLoaderEvents;
 import org.teacon.xkdeco.block.XKDecoBlock;
 import org.teacon.xkdeco.blockentity.BlockDisplayBlockEntity;
 import org.teacon.xkdeco.blockentity.ItemDisplayBlockEntity;
@@ -35,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 @MethodsReturnNonnullByDefault
-public final class XKDecoClient implements ClientModInitializer {
+public final class XKDecoClient implements ClientModInitializer, ClientResourceLoaderEvents.StartResourcePackReload {
 	@Override
 	public void onInitializeClient(ModContainer mod) {
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
@@ -52,7 +56,6 @@ public final class XKDecoClient implements ClientModInitializer {
 			return 0;
 		}, getColoredBlocks());
 
-		setItemRenderers(ResourceLoader.get(PackType.CLIENT_RESOURCES));
 		setEntityRenderers();
 		setAdditionalPackFinder(ResourceLoader.get(PackType.CLIENT_RESOURCES));
 	}
@@ -143,8 +146,8 @@ public final class XKDecoClient implements ClientModInitializer {
 		return map;
     }
 
-    public static void setItemRenderers(ResourceLoader resourceLoader) {
-		resourceLoader.registerReloader(XKDecoWithoutLevelRenderer.INSTANCE);
+    public static void setItemRenderers(ReloadableResourceManager reloadableResourceManager) {
+		reloadableResourceManager.registerReloadListener(XKDecoWithoutLevelRenderer.INSTANCE);
     }
 
     public static void setEntityRenderers() {
@@ -161,4 +164,9 @@ public final class XKDecoClient implements ClientModInitializer {
 			if (pack != null) profileAdder.accept(pack);
 		}));
     }
+
+	@Override
+	public void onStartResourcePackReload(Minecraft client, ResourceManager resourceManager, boolean first) {
+		if (resourceManager instanceof ReloadableResourceManager reloadableResourceManager) setItemRenderers(reloadableResourceManager);
+	}
 }
