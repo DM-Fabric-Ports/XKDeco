@@ -138,6 +138,7 @@ public final class SpecialWallBlock extends WallBlock implements EntityBlock, XK
     @Override
     @SuppressWarnings("deprecation")
     public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        // return RenderShape.ENTITYBLOCK_ANIMATED;
+		return RenderShape.MODEL;
     }
 }
