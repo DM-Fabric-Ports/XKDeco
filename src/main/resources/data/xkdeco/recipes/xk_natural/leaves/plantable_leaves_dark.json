@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "xkdeco:planted_leaves"
+  },
+  "result": "xkdeco:planted_leaves_dark"
+}

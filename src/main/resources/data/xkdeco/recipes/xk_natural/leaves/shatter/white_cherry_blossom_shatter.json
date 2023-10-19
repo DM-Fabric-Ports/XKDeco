@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LL"
+  ],
+  "key": {
+    "L": {
+      "item": "xkdeco:white_cherry_blossom"
+    }
+  },
+  "result": {
+    "item": "xkdeco:white_cherry_blossom_shatter",
+    "count": 3
+  }
+}

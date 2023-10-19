@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "xkdeco:stone_types/maya_and_aztec"
+  },
+  "result": "xkdeco:maya_brick_stairs"
+}
