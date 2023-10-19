@@ -1,0 +1,9 @@
+
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "c:bronze_blocks"
+  },
+  "result": "xkdeco:bronze_block"
+}
