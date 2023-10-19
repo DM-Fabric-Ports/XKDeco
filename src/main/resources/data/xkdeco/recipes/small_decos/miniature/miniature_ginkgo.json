@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "key": {
+    "S": {
+      "item": "xkdeco:ginkgo_leaves"
+    },
+    "T": {
+      "item": "xkdeco:miniature_tree"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_ginkgo",
+    "count": 1
+  }
+}

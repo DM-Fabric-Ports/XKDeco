@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "key": {
+    "S": {
+      "tag": "xkdeco:miniature/cherry"
+    },
+    "T": {
+      "item": "xkdeco:miniature_tree"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_cherry",
+    "count": 1
+  }
+}

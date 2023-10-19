@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LTS",
+    "WWW"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lily_pad"
+    },
+    "T": {
+      "item": "minecraft:tropical_fish"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:white_glazed_terracotta"
+    }
+  },
+  "result": {
+    "item": "xkdeco:fish_bowl",
+    "count": 1
+  }
+}

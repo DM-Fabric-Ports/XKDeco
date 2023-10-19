@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "TTT"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:dead_fire_coral"
+    },
+    "T": {
+      "tag": "minecraft:terracotta"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_coral",
+    "count": 1
+  }
+}

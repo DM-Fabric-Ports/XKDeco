@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:potion"
+    }
+  },
+  "result": {
+    "item": "xkdeco:bottle_stack",
+    "count": 1
+  }
+}

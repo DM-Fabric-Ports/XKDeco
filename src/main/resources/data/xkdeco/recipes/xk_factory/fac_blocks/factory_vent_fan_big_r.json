@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SFS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "xkdeco:steel_tile_slab"
+    },
+    "F": {
+      "item": "xkdeco:fan_blade"
+    }
+  },
+  "result": {
+    "item": "xkdeco:factory_vent_fan_big",
+    "count": 1
+  }
+}

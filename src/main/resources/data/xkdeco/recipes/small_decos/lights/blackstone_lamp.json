@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SIS",
+    "ITI",
+    "SIS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:polished_blackstone_bricks"
+    },
+    "I": {
+      "tag": "c:glass_panes"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "xkdeco:blackstone_lamp",
+    "count": 1
+  }
+}

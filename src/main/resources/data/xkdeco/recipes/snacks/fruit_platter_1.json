@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBA",
+    "NNN",
+    "WSL"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:sweet_berries"
+    },
+    "A": {
+      "item": "minecraft:apple"
+    },
+    "N": {
+      "item": "minecraft:melon_slice"
+    },
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:fruit_platter",
+    "count": 1
+  }
+}

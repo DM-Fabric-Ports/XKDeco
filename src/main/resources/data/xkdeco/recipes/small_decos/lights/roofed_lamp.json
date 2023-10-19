@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RIR",
+    "ITI",
+    "SIS"
+  ],
+  "key": {
+    "R": {
+      "item": "xkdeco:black_roof"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone"
+    },
+    "I": {
+      "tag": "c:glass_panes"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "xkdeco:roofed_lamp",
+    "count": 1
+  }
+}

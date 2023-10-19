@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "xkdeco:candlestick"
+    }
+  },
+  "result": {
+    "item": "xkdeco:big_candlestick",
+    "count": 1
+  }
+}

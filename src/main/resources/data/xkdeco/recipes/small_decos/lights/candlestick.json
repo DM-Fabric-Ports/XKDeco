@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T",
+    "I"
+  ],
+  "key": {
+    "T": {
+      "tag": "minecraft:candles"
+    },
+    "I": {
+      "item": "xkdeco:empty_candlestick"
+    }
+  },
+  "result": {
+    "item": "xkdeco:candlestick",
+    "count": 1
+  }
+}

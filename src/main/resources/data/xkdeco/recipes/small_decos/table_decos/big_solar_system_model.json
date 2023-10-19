@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BSB"
+  ],
+  "key": {
+    "B": {
+      "tag": "minecraft:wooden_buttons"
+    },
+    "S": {
+      "item": "xkdeco:solar_system_model"
+    }
+  },
+  "result": {
+    "item": "xkdeco:big_solar_system_model",
+    "count": 1
+  }
+}
