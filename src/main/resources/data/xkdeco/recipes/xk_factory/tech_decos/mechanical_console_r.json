@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FFI",
+    "BBI",
+    " L "
+  ],
+  "key": {
+    "F": {
+      "item": "xkdeco:factory_lamp"
+    },
+    "I": {
+      "item": "minecraft:lever"
+    },
+    "B": {
+      "item": "minecraft:stone_button"
+    },
+    "L": {
+      "item": "minecraft:lectern"
+    }
+  },
+  "result": {
+    "item": "xkdeco:mechanical_console",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "SLS"
+  ],
+  "key": {
+    "O": {
+      "item": "xkdeco:screen_off"
+    },
+    "S": {
+      "item": "xkdeco:steel_tiles"
+    },
+    "L": {
+      "item": "xkdeco:factory_lamp"
+    }
+  },
+  "result": {
+    "item": "xkdeco:hologram_base",
+    "count": 4
+  }
+}

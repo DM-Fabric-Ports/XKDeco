@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGB",
+    "PGC"
+  ],
+  "key": {
+    "B": {
+      "item": "xkdeco:factory_light_bar"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+
+    "P": {
+      "item": "minecraft:compass"
+    },
+
+    "C": {
+      "item": "minecraft:clock"
+    }
+  },
+  "result": {
+    "item": "xkdeco:mechanical_screen",
+    "count": 1
+  }
+}
