@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "PPP"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:blue_terracotta"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:blue_tiles",
+    "count": 8
+  }
+}

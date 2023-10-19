@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "xkdeco:black_tiles"
+  },
+  "result": "xkdeco:black_roof_ridge"
+}

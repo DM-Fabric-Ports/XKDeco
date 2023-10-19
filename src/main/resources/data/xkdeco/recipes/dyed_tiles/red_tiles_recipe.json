@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "PPP"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:red_terracotta"
+    },
+   
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:red_tiles",
+    "count": 8
+  }
+}

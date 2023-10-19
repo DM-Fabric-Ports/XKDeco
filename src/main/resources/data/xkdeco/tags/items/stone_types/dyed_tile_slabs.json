@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "xkdeco:black_tile_slab",
+    "xkdeco:blue_tile_slab",
+    "xkdeco:cyan_tile_slab",
+    "xkdeco:green_tile_slab",
+    "xkdeco:red_tile_slab",
+    "xkdeco:yellow_tile_slab"
+  ]
+}
