@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS"
+  ],
+  "key": {
+
+    "S": {
+      "item": "xkdeco:screen_off"
+    }
+  },
+  "result": {
+    "item": "xkdeco:tech_screen",
+    "count": 1
+  }
+}

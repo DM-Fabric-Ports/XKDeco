@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "xkdeco:stone_types/inca_slabs"
+  },
+  "result": "xkdeco:inca_stonebrick_slab"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NTK",
+    "GSG",
+    "GGG"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:nautilus_shell"
+    },
+    "T": {
+      "item": "minecraft:tropical_fish"
+    },
+    "K": {
+      "item": "minecraft:kelp"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "S": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "result": {
+    "item": "xkdeco:fish_tank",
+    "count": 1
+  }
+}

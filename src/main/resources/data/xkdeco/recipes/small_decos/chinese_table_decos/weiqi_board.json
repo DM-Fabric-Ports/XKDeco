@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "TTT",
+    "BLW"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "T": {
+      "tag": "minecraft:wooden_buttons"
+    },
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "L": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "xkdeco:weiqi_board",
+    "count": 1
+  }
+}

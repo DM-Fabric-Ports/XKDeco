@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    "BLG"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "B": {
+      "item": "minecraft:blue_dye"
+    },
+    "L": {
+      "item": "xkdeco:wood_globe"
+    },
+    "G": {
+      "item": "minecraft:green_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:globe",
+    "count": 1
+  }
+}

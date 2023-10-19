@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "minecraft:signs"
+  },
+  "result": "xkdeco:small_sign_ground"
+}

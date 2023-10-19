@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "xkdeco:black_tiles",
+    "xkdeco:black_tile_stairs",
+    "xkdeco:blue_tiles",
+    "xkdeco:blue_tile_stairs",
+    "xkdeco:cyan_tiles",
+    "xkdeco:cyan_tile_stairs",
+    "xkdeco:green_tiles",
+    "xkdeco:green_tile_stairs",
+    "xkdeco:red_tiles",
+    "xkdeco:red_tile_stairs",
+    "xkdeco:yellow_tiles",
+    "xkdeco:yellow_tile_stairs"
+  ]
+}

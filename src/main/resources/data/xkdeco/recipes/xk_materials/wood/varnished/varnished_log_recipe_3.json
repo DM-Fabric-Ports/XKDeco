@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "RLR",
+    "RRR"
+  ],
+  "key": {
+    "L": {
+      "item": "malum:holy_sap"
+    },
+   
+    "R": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "result": {
+    "item": "xkdeco:varnished_log",
+    "count": 8
+  }
+}

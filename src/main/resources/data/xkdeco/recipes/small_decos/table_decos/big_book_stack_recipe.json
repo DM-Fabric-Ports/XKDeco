@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB ",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "xkdeco:big_book_stack",
+    "count": 1
+  }
+}

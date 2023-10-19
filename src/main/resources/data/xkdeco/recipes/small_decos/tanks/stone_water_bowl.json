@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "SSS"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:water_bucket"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "xkdeco:stone_water_bowl",
+    "count": 1
+  }
+}

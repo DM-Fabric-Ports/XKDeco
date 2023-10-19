@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "PPP"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cyan_terracotta"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:cyan_tiles",
+    "count": 8
+  }
+}

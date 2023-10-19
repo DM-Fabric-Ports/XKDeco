@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CPI",
+    "WSL"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cookie"
+    },
+    "P": {
+      "item": "minecraft:pumpkin_pie"
+    },
+    "I": {
+      "item": "minecraft:bread"
+    },
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:refreshments",
+    "count": 1
+  }
+}

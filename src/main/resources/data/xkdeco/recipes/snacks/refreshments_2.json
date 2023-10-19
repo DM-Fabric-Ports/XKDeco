@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "III",
+    "WSL"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "I": {
+      "tag": "xkdeco:foods_for_refreshments/pie_slices"
+    },
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:refreshments",
+    "count": 1
+  }
+}

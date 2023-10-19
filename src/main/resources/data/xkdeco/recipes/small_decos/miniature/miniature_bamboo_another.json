@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "TTT"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:bamboo"
+    },
+    "T": {
+      "tag": "minecraft:terracotta"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_bamboo",
+    "count": 1
+  }
+}

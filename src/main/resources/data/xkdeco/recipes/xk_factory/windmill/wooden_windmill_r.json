@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "TIT",
+    " T "
+  ],
+  "key": {
+    "T": {
+      "tag": "minecraft:wooden_trapdoors"
+    },
+   
+    "I": {
+      "tag": "minecraft:wooden_planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:wooden_windmill",
+    "count": 1
+  }
+}

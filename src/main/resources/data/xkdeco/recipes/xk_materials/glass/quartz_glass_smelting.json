@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "xkdeco:quartz_sand"
+  },
+  "result": "xkdeco:quartz_glass",
+  "cookingTime": 200
+}

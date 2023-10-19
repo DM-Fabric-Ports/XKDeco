@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "xkdeco:ebony_planks"
+  },
+  "result": "xkdeco:ebony_divided_shelf"
+}

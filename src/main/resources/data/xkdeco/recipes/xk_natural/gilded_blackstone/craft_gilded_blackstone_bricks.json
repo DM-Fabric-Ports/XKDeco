@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:gilded_blackstone"   
+    }
+
+  },
+  "result": {
+    "item": "xkdeco:gilded_blackstone_bricks",
+    "count": 4
+  }
+}

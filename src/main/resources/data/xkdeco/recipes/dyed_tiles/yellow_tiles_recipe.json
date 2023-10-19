@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YYY",
+    "PPP"
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:yellow_terracotta"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:yellow_tiles",
+    "count": 8
+  }
+}

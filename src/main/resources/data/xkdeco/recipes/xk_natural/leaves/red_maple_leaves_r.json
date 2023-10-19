@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "ORO",
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "tag": "minecraft:leaves"
+    },
+  
+    "R": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:red_maple_leaves",
+    "count": 8
+  }
+}

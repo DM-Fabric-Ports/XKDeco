@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "key": {
+    "S": {
+      "tag": "c:stone"
+    },
+    "T": {
+      "item": "xkdeco:miniature_tree"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_mount",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GA",
+    "AG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:granite"
+    },
+    "A": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "xkdeco:inca_stone",
+    "count": 4
+  }
+}

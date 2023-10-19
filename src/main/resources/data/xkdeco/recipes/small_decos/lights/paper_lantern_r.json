@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PTP",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+  
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "xkdeco:paper_lantern",
+    "count": 1
+  }
+}

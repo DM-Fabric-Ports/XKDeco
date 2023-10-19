@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " M ",
+    "CBC",
+    "WSL"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "C": {
+      "tag": "xkdeco:foods_for_refreshments/cookies"
+    },
+    "B": {
+      "item": "minecraft:bread"
+    },
+    "W": {
+      "item": "minecraft:white_dye"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:refreshments",
+    "count": 1
+  }
+}

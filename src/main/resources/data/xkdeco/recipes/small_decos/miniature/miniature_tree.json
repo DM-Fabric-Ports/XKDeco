@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "TTT"
+  ],
+  "key": {
+    "S": {
+      "tag": "minecraft:saplings"
+    },
+    "T": {
+      "tag": "minecraft:terracotta"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_tree",
+    "count": 1
+  }
+}

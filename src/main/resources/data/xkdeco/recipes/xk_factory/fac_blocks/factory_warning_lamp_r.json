@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "L"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "L": {
+      "item": "xkdeco:factory_lamp"
+    }
+  },
+  "result": {
+    "item": "xkdeco:factory_warning_lamp",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FS ",
+    "TTT"
+  ],
+  "key": {
+    "F": {
+      "tag": "minecraft:flowers"
+    },
+    "S": {
+      "item": "minecraft:cactus"
+    },
+    "T": {
+      "tag": "minecraft:terracotta"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_succulents",
+    "count": 1
+  }
+}

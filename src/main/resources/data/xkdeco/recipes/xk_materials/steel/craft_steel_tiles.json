@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "tag": "c:steel_ingots"   
+    }
+
+  },
+  "result": {
+    "item": "xkdeco:steel_tiles",
+    "count": 16
+  }
+}

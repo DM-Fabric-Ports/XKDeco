@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "xkdeco:aztec_stonebrick_stairs",
+    "xkdeco:aztec_stonebricks",
+    "xkdeco:aztec_chiseled_stonebricks",
+    "xkdeco:aztec_cut_stonebricks",
+    "xkdeco:aztec_sculpture_stone",
+    "xkdeco:maya_brick_stairs",
+    "xkdeco:maya_bricks",
+    "xkdeco:maya_double_screw_thread_stone",
+    "xkdeco:maya_pictogram_stone",
+    "xkdeco:maya_quad_screw_thread_stone",
+    "xkdeco:maya_single_screw_thread_stone",
+    "xkdeco:maya_skull_stone",
+    "xkdeco:maya_chiseled_stonebricks",
+    "xkdeco:maya_cut_stonebricks",
+    "xkdeco:maya_pictogram_stone",
+    "xkdeco:maya_pillar",
+    "xkdeco:maya_polished_stonebrick_stairs",
+    "xkdeco:maya_polished_stonebricks",
+    "xkdeco:maya_stone_stairs",
+    "xkdeco:maya_stonebrick_stairs",
+    "xkdeco:maya_stonebricks"
+
+  ]
+}

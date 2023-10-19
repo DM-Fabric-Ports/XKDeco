@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 16,
+  "ingredient": {
+    "item": "xkdeco:cut_gold_block"
+  },
+  "result": "xkdeco:chiseled_gold_block"
+}

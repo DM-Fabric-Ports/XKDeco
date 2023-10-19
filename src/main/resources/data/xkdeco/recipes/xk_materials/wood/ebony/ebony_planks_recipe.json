@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "xkdeco:ebony_log"
+    }
+  ],
+  "result": {
+    "item": "xkdeco:ebony_planks",
+    "count": 4
+  }
+}

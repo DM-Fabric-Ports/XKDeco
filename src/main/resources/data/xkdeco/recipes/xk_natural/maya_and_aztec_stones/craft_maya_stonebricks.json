@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "xkdeco:maya_stone"   
+    }
+
+  },
+  "result": {
+    "item": "xkdeco:maya_stonebricks",
+    "count": 4
+  }
+}

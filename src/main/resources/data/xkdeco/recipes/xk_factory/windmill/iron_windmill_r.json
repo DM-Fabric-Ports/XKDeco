@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "TIT",
+    " T "
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:iron_trapdoor"
+    },
+   
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "xkdeco:iron_windmill",
+    "count": 1
+  }
+}

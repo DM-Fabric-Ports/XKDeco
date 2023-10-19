@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "minecraft:sand"
+    },
+    {
+      "item": "xkdeco:steel_filings"
+    }
+  ],
+  "result": {
+    "item": "xkdeco:toughened_sand",
+    "count": 2
+  }
+}

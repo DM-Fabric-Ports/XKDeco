@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "L"
+  ],
+  "key": {
+    "S": {
+      "item": "xkdeco:screen_off"
+    },
+    "L": {
+      "item": "minecraft:lectern"
+    }
+  },
+  "result": {
+    "item": "xkdeco:tech_console",
+    "count": 1
+  }
+}

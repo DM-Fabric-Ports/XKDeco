@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CB",
+    "BC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cyan_terracotta"
+    },
+    "B": {
+      "item": "minecraft:bricks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:cyan_bricks",
+    "count": 6
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BIW",
+    "LLL"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:feather"
+    },
+    "L": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "item": "xkdeco:calligraphy",
+    "count": 1
+  }
+}

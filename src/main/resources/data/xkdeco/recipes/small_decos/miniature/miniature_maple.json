@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "key": {
+    "S": {
+      "tag": "xkdeco:leaves_for_miniatures/maple"
+    },
+    "T": {
+      "item": "xkdeco:miniature_tree"
+    }
+  },
+  "result": {
+    "item": "xkdeco:miniature_maple",
+    "count": 1
+  }
+}

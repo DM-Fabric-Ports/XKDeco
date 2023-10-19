@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "L"
+  ],
+  "key": {
+    "S": {
+      "item": "xkdeco:steel_tile_slab"
+    },
+    "L": {
+      "item": "xkdeco:factory_lamp"
+    }
+  },
+  "result": {
+    "item": "xkdeco:factory_pendant",
+    "count": 4
+  }
+}

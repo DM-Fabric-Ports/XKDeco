@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PRP",
+    "PPP"    
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:gold_nugget"
+    },
+    "R": {
+      "item": "xkdeco:red_lantern"
+    }
+  },
+  "result": {
+    "item": "xkdeco:festival_lantern",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "xkdeco:toughened_sand"
+  },
+  "result": "xkdeco:toughened_glass",
+  "cookingTime": 200
+}

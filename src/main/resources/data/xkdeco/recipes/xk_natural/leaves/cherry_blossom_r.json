@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "LML",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:leaves"
+    },
+    "M": {
+      "item": "minecraft:magenta_dye"
+    }
+  },
+  "result": {
+    "item": "xkdeco:cherry_blossom",
+    "count": 8
+  }
+}

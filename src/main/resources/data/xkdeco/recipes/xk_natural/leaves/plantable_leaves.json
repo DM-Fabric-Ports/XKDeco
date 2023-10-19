@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "LYL",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:leaves"
+    },
+    "Y": {
+      "item": "minecraft:grass"
+    }
+  },
+  "result": {
+    "item": "xkdeco:plantable_leaves",
+    "count": 8
+  }
+}

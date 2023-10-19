@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PGP",
+    " S "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:glass_pane"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "S": {
+      "item": "xkdeco:steel_tile_slab"
+    }
+  },
+  "result": {
+    "item": "xkdeco:factory_lamp",
+    "count": 4
+  }
+}

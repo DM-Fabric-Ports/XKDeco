@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "xkdeco:mahogany_log"
+    }
+  ],
+  "result": {
+    "item": "xkdeco:mahogany_planks",
+    "count": 4
+  }
+}

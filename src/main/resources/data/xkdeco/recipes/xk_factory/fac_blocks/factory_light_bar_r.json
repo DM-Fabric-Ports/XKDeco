@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "SSS"
+  ],
+  "key": {
+    "L": {
+      "item": "xkdeco:factory_lamp_block"
+    },
+    "S": {
+      "item": "xkdeco:steel_tile_slab"
+    }
+  },
+  "result": {
+    "item": "xkdeco:factory_light_bar",
+    "count": 16
+  }
+}
