@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "xkdeco:varnished_log"
+    }
+  ],
+  "result": {
+    "item": "xkdeco:varnished_planks",
+    "count": 4
+  }
+}

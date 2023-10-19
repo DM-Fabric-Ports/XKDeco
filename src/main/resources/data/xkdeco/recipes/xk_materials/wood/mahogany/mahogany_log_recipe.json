@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "RLR",
+    " R "
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:red_dye"
+    },
+   
+    "L": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "xkdeco:mahogany_log",
+    "count": 1
+  }
+}

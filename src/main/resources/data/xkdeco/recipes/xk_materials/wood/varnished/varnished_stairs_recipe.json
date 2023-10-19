@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P  ",
+    "PP ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "xkdeco:varnished_planks"
+    }
+  },
+  "result": {
+    "item": "xkdeco:varnished_stairs",
+    "count": 4
+  }
+}
