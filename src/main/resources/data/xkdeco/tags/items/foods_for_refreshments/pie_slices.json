@@ -1,1 +1,10 @@
-
+{
+  "replace": false,
+  "values": [
+    "farmersdelight:cake_slice",
+    "farmersdelight:sweet_berry_cheesecake_slice",
+    "farmersdelight:chocolate_pie_slice",
+    "farmersdelight:apple_pie_slice",
+    "farmersdelight:kelp_roll_slice"
+  ]
+}
