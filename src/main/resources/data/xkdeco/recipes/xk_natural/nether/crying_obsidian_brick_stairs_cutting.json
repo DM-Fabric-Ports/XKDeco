@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "xkdeco:crying_obsidian_bricks"
+  },
+  "result": "xkdeco:crying_obsidian_brick_stairs"
+}
